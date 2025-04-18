@@ -1,9 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import ParticleBackground from "@/components/animations/ParticleBackground";
-import Reveal from "@/components/animations/RevealAnimation";
 import { FloatingElement } from "@/components/animations/FloatingImages";
 
 export default function Home() {
@@ -50,16 +48,16 @@ export default function Home() {
               </Reveal>
             </div>
             
-            <div className="order-1 lg:order-2 relative h-[300px] lg:h-[500px]">
-              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80">
+            <div className="order-1 lg:order-2 relative h-[400px] lg:h-[600px]">
+              <FloatingElement className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96">
                 <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-80 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement delay={0.2} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-60 md:h-60">
+              <FloatingElement delay={0.2} className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 md:w-80 md:h-80">
                 <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-70 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full">
+              <FloatingElement className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 overflow-hidden rounded-full">
                 <div className="w-full h-full glass overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1518770660439-4636190af475"
