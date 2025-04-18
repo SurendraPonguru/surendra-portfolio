@@ -28,6 +28,8 @@ export default function Reveal({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Add a base delay of 0.5s plus any additional delay
+            element.style.transitionDelay = `${0.5 + delay}s`;
             element.classList.add("animate-fade-in");
             if (once) observer.unobserve(element);
           } else if (!once) {
@@ -43,7 +45,7 @@ export default function Reveal({
     return () => {
       if (element) observer.unobserve(element);
     };
-  }, [once]);
+  }, [once, delay]);
   
   const getInitialStyles = () => {
     let transform = "";
@@ -76,7 +78,6 @@ export default function Reveal({
       style={{
         ...getInitialStyles(),
         transitionDuration: `${duration}s`,
-        transitionDelay: `${delay}s`,
       }}
     >
       {children}

@@ -9,7 +9,7 @@ export default function Layout() {
     <ThemeProvider>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow pt-24">
+        <main className="flex-grow pt-16 sm:pt-20 transition-all duration-300">
           <Outlet />
         </main>
         <Footer />
