@@ -11,7 +11,6 @@ export default function Home() {
     <>
       <ParticleBackground />
       
-      {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -53,19 +52,21 @@ export default function Home() {
             
             <div className="order-1 lg:order-2 relative h-[300px] lg:h-[500px]">
               <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80">
-                <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-90 filter blur-md"></div>
+                <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-80 filter blur-xl"></div>
               </FloatingElement>
 
               <FloatingElement delay={0.2} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-60 md:h-60">
-                <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-80 filter blur-md"></div>
+                <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-70 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-white/20 shadow-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800"
-                  alt="Hero"
-                  className="w-full h-full object-cover"
-                />
+              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full">
+                <div className="w-full h-full glass overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+                    alt="Hero"
+                    className="w-full h-full object-cover transition-transform hover:scale-110 duration-700"
+                  />
+                </div>
               </FloatingElement>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import ParticleBackground from "@/components/animations/ParticleBackground";
 import Reveal from "@/components/animations/RevealAnimation";
 import { FloatingElement } from "@/components/animations/FloatingImages";
@@ -49,19 +48,21 @@ export default function About() {
         <div className="container mx-auto px-4 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="relative h-[400px] lg:h-[600px] order-1 lg:order-1">
-              <FloatingElement className="absolute left-[10%] top-[10%] w-64 h-80 bg-primary/5 rounded-2xl" delay={0.5}>
+              <FloatingElement className="absolute left-[10%] top-[10%] w-64 h-80 bg-gradient-primary/10 rounded-2xl backdrop-blur-sm" delay={0.5}>
                 <div />
               </FloatingElement>
-              <FloatingElement className="absolute right-[10%] bottom-[10%] w-64 h-80 bg-accent/5 rounded-2xl" delay={0.3}>
+              <FloatingElement className="absolute right-[10%] bottom-[10%] w-64 h-80 bg-gradient-accent/10 rounded-2xl backdrop-blur-sm" delay={0.3}>
                 <div />
               </FloatingElement>
               
-              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-96 overflow-hidden rounded-2xl border-4 border-white/20 shadow-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800"
-                  alt="About Me"
-                  className="w-full h-full object-cover"
-                />
+              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-96 overflow-hidden rounded-2xl">
+                <div className="w-full h-full glass overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                    alt="About Me"
+                    className="w-full h-full object-cover transition-transform hover:scale-110 duration-700"
+                  />
+                </div>
               </FloatingElement>
             </div>
 
