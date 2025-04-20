@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import ParticleBackground from "@/components/animations/ParticleBackground";
 import { FloatingElement } from "@/components/animations/FloatingImages";
+import Reveal from "@/components/animations/RevealAnimation";
+import { ProfileDetails } from "@/assests/context";
 
 export default function Home() {
   return (
@@ -11,26 +13,28 @@ export default function Home() {
       
       <section className="relative min-h-[90vh] flex items-center">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="container-home grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
             <div className="order-2 lg:order-1">
               <Reveal>
                 <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
                   Welcome to my portfolio
                 </span>
               </Reveal>
-              <Reveal delay={0.1}>
+              <Reveal>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Hi, I'm <span className="gradient-text">Your Name</span>
+                  Hi, I'm 
                   <br />
-                  <span className="text-3xl md:text-4xl lg:text-5xl">Creative Developer</span>
+                  <span className="gradient-text">{ProfileDetails.name}</span>
+                  <br />
+                  <span className="text-3xl md:text-4xl lg:text-5xl">{ProfileDetails.domain}</span>
                 </h1>
               </Reveal>
-              <Reveal delay={0.2}>
+              <Reveal>
                 <p className="text-lg text-muted-foreground mb-8 max-w-lg">
                   I create engaging digital experiences with attention to detail and a focus on user experience.
                 </p>
               </Reveal>
-              <Reveal delay={0.3}>
+              <Reveal>
                 <div className="flex flex-wrap gap-4">
                   <Button asChild variant="default" size="lg" className="bg-gradient-primary hover:bg-gradient-primary/90">
                     <Link to="/projects">
@@ -104,7 +108,7 @@ export default function Home() {
                 delay: 0.3,
               },
             ].map((service, index) => (
-              <Reveal key={index} delay={service.delay}>
+              <Reveal key={index}>
                 <div className="bg-card p-6 rounded-xl shadow-md relative overflow-hidden card-hover border border-border/50">
                   <div className="absolute top-0 right-0 opacity-5 text-9xl font-bold -mt-4 -mr-4">{service.icon}</div>
                   <div className="text-3xl mb-4">{service.icon}</div>
@@ -123,12 +127,12 @@ export default function Home() {
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal>
             <p className="text-white/80 max-w-2xl mx-auto mb-8">
               I'm always open to new projects and collaborations. Let's create something amazing together.
             </p>
           </Reveal>
-          <Reveal delay={0.2}>
+          <Reveal>
             <Button asChild variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
               <Link to="/contact">
                 Get In Touch

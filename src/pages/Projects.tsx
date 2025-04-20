@@ -13,9 +13,9 @@ export default function Projects() {
       title: "E-Commerce Website",
       description: "A fully responsive e-commerce platform with product catalog, cart functionality, and secure checkout process.",
       image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      tags: ["React", "JavaScript", "Tailwind CSS",  "Redux"],
       category: "web",
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project"
     },
     {
@@ -25,7 +25,7 @@ export default function Projects() {
       image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?auto=format&fit=crop&w=800",
       tags: ["React", "Tailwind CSS", "Framer Motion"],
       category: "web",
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project"
     },
     {
@@ -35,7 +35,7 @@ export default function Projects() {
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800",
       tags: ["React Native", "Firebase", "Redux"],
       category: "mobile",
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project"
     },
     {
@@ -45,7 +45,7 @@ export default function Projects() {
       image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=800",
       tags: ["JavaScript", "API Integration", "CSS3"],
       category: "web",
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project"
     },
     {
@@ -55,7 +55,7 @@ export default function Projects() {
       image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800",
       tags: ["React", "Chart.js", "Social APIs"],
       category: "dashboard",
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project"
     },
     {
@@ -65,7 +65,7 @@ export default function Projects() {
       image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800",
       tags: ["React Native", "Firebase", "HealthKit"],
       category: "mobile",
-      liveUrl: "https://example.com",
+      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project"
     }
   ];
@@ -90,13 +90,13 @@ export default function Projects() {
           <Reveal>
             <h1 className="text-3xl md:text-4xl font-bold mb-3 text-center">My Projects</h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal>
             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
               A collection of my recent work spanning web applications, mobile apps, and interactive experiences.
             </p>
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <Reveal>
             <div className="flex flex-wrap justify-center gap-2 mb-12">
               {categories.map(category => (
                 <button
@@ -116,14 +116,14 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <Reveal key={project.id} delay={0.1 * index}>
+              <Reveal key={project.id}>
                 <ProjectCard
                   title={project.title}
                   description={project.description}
                   image={project.image}
                   tags={project.tags}
-                  liveUrl={project.liveUrl}
-                  githubUrl={project.githubUrl}
+                  // liveUrl={project?.liveUrl}
+                  // githubUrl={project.githubUrl}
                 />
               </Reveal>
             ))}

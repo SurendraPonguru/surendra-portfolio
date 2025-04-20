@@ -21,19 +21,26 @@ export default function Skills() {
       description: "React hooks, context API, custom hooks"
     },
     {
-      name: "CSS & Tailwind",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-      level: 85,
-      color: "bg-teal-500",
-      description: "Responsive design, animations, custom utilities"
+      name: "Angular",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+      level: 90,
+      color: "bg-green-600",
+      description: "Components, services, routing, RxJS"
     },
     {
-      name: "Node.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-      level: 80,
-      color: "bg-green-600",
-      description: "RESTful APIs, Express, middleware"
+      name: "CSS & Tailwind",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      level: 85,
+      color: "bg-sky-600",
+      description: "Responsive design, animations, custom utilities"
     },
+    // {
+    //   name: "Node.js",
+    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    //   level: 80,
+    //   color: "bg-green-600",
+    //   description: "RESTful APIs, Express, middleware"
+    // },
     {
       name: "TypeScript",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
@@ -41,13 +48,13 @@ export default function Skills() {
       color: "bg-blue-600",
       description: "Type definitions, interfaces, generics"
     },
-    {
-      name: "MongoDB",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-      level: 70,
-      color: "bg-green-500",
-      description: "Schema design, aggregation, indexing"
-    }
+    // {
+    //   name: "MongoDB",
+    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    //   level: 70,
+    //   color: "bg-green-500",
+    //   description: "Schema design, aggregation, indexing"
+    // }
   ];
 
   const otherSkills = [
@@ -98,7 +105,7 @@ export default function Skills() {
             <Reveal>
               <h1 className="text-3xl md:text-4xl font-bold mb-3 text-center relative z-10">My Skills</h1>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal>
               <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12 relative z-10">
                 I've developed expertise in various technologies and methodologies over my career, with a focus on front-end development and user experience.
               </p>
@@ -110,7 +117,7 @@ export default function Skills() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {technicalSkills.map((skill, index) => (
-              <Reveal key={skill.name} delay={index * 0.1}>
+              <Reveal key={skill.name}>
                 <SkillCard
                   name={skill.name}
                   icon={skill.icon}
@@ -127,7 +134,7 @@ export default function Skills() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-16">
             {otherSkills.map((skill, index) => (
-              <Reveal key={skill.name} delay={index * 0.1}>
+              <Reveal key={skill.name}>
                 <SkillCard
                   name={skill.name}
                   icon={skill.icon}
@@ -151,7 +158,8 @@ export default function Skills() {
                   Technology evolves rapidly, and I'm committed to staying current with the latest tools and best practices. I'm currently exploring:
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  {["Web3", "Next.js", "GraphQL", "AWS", "Docker"].map((tech) => (
+                {/* "Web3", "Next.js", "GraphQL", "Karma", "Docker" */}
+                  {["Web3", "Jasmine", "Karma", "Docker"].map((tech) => (
                     <span key={tech} className="bg-white/20 px-3 py-1 rounded-full text-sm">
                       {tech}
                     </span>

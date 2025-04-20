@@ -3,41 +3,23 @@ import { FloatingElement } from "@/components/animations/FloatingImages";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/animations/RevealAnimation";
+import { workExperience ,education } from "@/assests/context";
 
 export default function About() {
-  const experiences = [
-    {
-      year: "2022 - Present",
-      title: "Senior Developer",
-      company: "Tech Company",
-      description: "Lead developer on multiple projects, managing a team of 5 developers and implementing best practices."
-    },
-    {
-      year: "2019 - 2022",
-      title: "Web Developer",
-      company: "Digital Agency",
-      description: "Developed responsive websites and web applications for various clients, focusing on performance and user experience."
-    },
-    {
-      year: "2017 - 2019",
-      title: "Junior Developer",
-      company: "Startup Inc",
-      description: "Worked on the front-end of web applications, learning best practices and collaborating with senior developers."
-    }
-  ];
 
-  const education = [
-    {
-      year: "2015 - 2017",
-      degree: "Master's in Computer Science",
-      institution: "University Name",
-    },
-    {
-      year: "2011 - 2015",
-      degree: "Bachelor's in Computer Science",
-      institution: "University Name",
-    }
-  ];
+  // const education = [
+  //   {
+  //     year: "2015 - 2017",
+  //     degree: "Master's in Computer Science",
+  //     institution: "University Name",
+  //   },
+  //   {
+  //     year: "2011 - 2015",
+  //     degree: "Bachelor's in Computer Science",
+  //     institution: "University Name",
+  //   }
+  // ];
 
   return (
     <>
@@ -69,17 +51,17 @@ export default function About() {
               <Reveal>
                 <h1 className="text-3xl md:text-4xl font-bold mb-6">About Me</h1>
               </Reveal>
-              <Reveal delay={0.1}>
+              <Reveal>
                 <p className="text-lg text-muted-foreground mb-6">
                   I'm a passionate developer with over 5 years of experience creating beautiful, functional websites and applications. I specialize in front-end development with a focus on user experience and performance.
                 </p>
               </Reveal>
-              <Reveal delay={0.2}>
+              <Reveal>
                 <p className="text-lg text-muted-foreground mb-8">
                   My journey in web development started when I was in college, and I've been in love with creating digital experiences ever since. I enjoy solving complex problems and turning ideas into reality through code.
                 </p>
               </Reveal>
-              <Reveal delay={0.3}>
+              <Reveal>
                 <Button asChild variant="default" className="bg-gradient-primary hover:bg-gradient-primary/90">
                   <Link to="/contact">
                     Contact Me
@@ -95,13 +77,13 @@ export default function About() {
               <h2 className="text-2xl md:text-3xl font-bold mb-8">My Experience</h2>
             </Reveal>
             <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <Reveal key={index} delay={index * 0.1}>
+              {workExperience.map((exp, index) => (
+                <Reveal key={index}>
                   <div className="bg-card rounded-xl p-6 shadow-md card-hover border border-border/50">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                      <h3 className="text-xl font-bold">{exp.title} @ {exp.company}</h3>
+                      <h3 className="text-xl font-bold">{exp.role} @ {exp.companyName}</h3>
                       <span className="text-sm text-primary font-medium px-3 py-1 rounded-full bg-primary/10 w-fit">
-                        {exp.year}
+                        {exp.duration}
                       </span>
                     </div>
                     <p className="text-muted-foreground">{exp.description}</p>
@@ -117,15 +99,16 @@ export default function About() {
             </Reveal>
             <div className="space-y-8">
               {education.map((edu, index) => (
-                <Reveal key={index} delay={index * 0.1}>
+                <Reveal key={index}>
                   <div className="bg-card rounded-xl p-6 shadow-md card-hover border border-border/50">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                       <h3 className="text-xl font-bold">{edu.degree}</h3>
                       <span className="text-sm text-primary font-medium px-3 py-1 rounded-full bg-primary/10 w-fit">
-                        {edu.year}
+                        {edu.duration}
                       </span>
                     </div>
-                    <p className="text-lg">{edu.institution}</p>
+                    <p className="text-lg">{edu.institution} </p>
+                    <p className="text-lg"> {edu.location}</p>
                   </div>
                 </Reveal>
               ))}

@@ -15,6 +15,7 @@ interface SocialLinkProps {
   label: string;
   color: string;
 }
+import { socialMedia } from "@/assests/context";
 
 function SocialLink({ href, icon, label, color }: SocialLinkProps) {
   return (
@@ -39,37 +40,37 @@ export default function SocialLinks() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <SocialLink
-        href="https://github.com/username"
+        href={socialMedia.github}
         icon={<Github size={20} />}
         label="GitHub"
         color="bg-gray-800 hover:bg-gray-700"
       />
       <SocialLink
-        href="https://linkedin.com/in/username"
+        href={socialMedia.linkedin}
         icon={<Linkedin size={20} />}
         label="LinkedIn"
         color="bg-blue-600 hover:bg-blue-500"
       />
       <SocialLink
-        href="https://twitter.com/username"
+        href={socialMedia.twitter}
         icon={<Twitter size={20} />}
         label="Twitter"
         color="bg-sky-500 hover:bg-sky-400"
       />
       <SocialLink
-        href="https://instagram.com/username"
+        href={socialMedia.instagram}
         icon={<Instagram size={20} />}
         label="Instagram"
         color="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400"
       />
       <SocialLink
-        href="mailto:email@example.com"
+        href={`mailto:${socialMedia.email}`}
         icon={<Mail size={20} />}
         label="Email"
         color="bg-emerald-600 hover:bg-emerald-500"
       />
       <SocialLink
-        href="tel:+1234567890"
+        href={`tel:${socialMedia.Phone}`}
         icon={<Phone size={20} />}
         label="Phone"
         color="bg-amber-600 hover:bg-amber-500"

@@ -1,6 +1,7 @@
 
 import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { socialMedia } from "@/assests/context";
 
 export default function Footer() {
   return (
@@ -29,7 +30,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold">Connect</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com" 
+                href={socialMedia.github} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="social-icon hover:bg-primary/10"
@@ -38,7 +39,7 @@ export default function Footer() {
                 <Github size={18} />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href={socialMedia.linkedin} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="social-icon hover:bg-primary/10"
@@ -47,7 +48,7 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
               <a 
-                href="https://twitter.com" 
+                href={socialMedia.twitter} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="social-icon hover:bg-primary/10"
@@ -56,7 +57,7 @@ export default function Footer() {
                 <Twitter size={18} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href={socialMedia.instagram} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="social-icon hover:bg-primary/10"
