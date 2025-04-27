@@ -65,7 +65,7 @@ export default function Contact() {
                 </div>
                 <div className="relative h-60 rounded-xl overflow-hidden">
                   <img 
-                    src="/public/lovable-uploads/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png" 
+                    src="/public/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png" 
                     alt="Hyderabad Cityscape" 
                     className="w-full h-full object-cover"
                   />
