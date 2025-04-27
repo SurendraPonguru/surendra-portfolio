@@ -53,21 +53,21 @@ export default function Home() {
               </Reveal>
             </div>
             
-            <div className="order-1 lg:order-2 relative h-[450px] lg:h-[650px] mt-[-30px]">
-              <FloatingElement className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
-                <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-80 filter blur-xl"></div>
+            <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] -mt-14">
+              <FloatingElement className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
+                <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-60 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement delay={0.2} className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[400px] md:h-[400px]">
-                <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-70 filter blur-xl"></div>
+              <FloatingElement delay={0.2} className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[400px] md:h-[400px]">
+                <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-50 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[420px] md:h-[420px] overflow-hidden rounded-full">
-                <div className="w-full h-full glass overflow-hidden">
+              <FloatingElement className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px] overflow-hidden rounded-full">
+                <div className="w-full h-full overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                    alt="Hero"
-                    className="w-full h-full object-cover transition-transform hover:scale-110 duration-700"
+                    src="/public/lovable-uploads/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
+                    alt="Profile Image"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </FloatingElement>
@@ -110,7 +110,7 @@ export default function Home() {
               },
             ].map((service, index) => (
               <Reveal key={index}>
-                <div className="bg-card p-6 rounded-xl shadow-md relative overflow-hidden card-hover border border-border/50">
+                <div className="bg-card p-6 rounded-xl relative overflow-hidden card-hover border border-border/50">
                   <div className="absolute top-0 right-0 opacity-5 text-9xl font-bold -mt-4 -mr-4">{service.icon}</div>
                   <div className="text-3xl mb-4">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>

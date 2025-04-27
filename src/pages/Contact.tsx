@@ -3,7 +3,7 @@ import ParticleBackground from "@/components/animations/ParticleBackground";
 import Reveal from "@/components/animations/RevealAnimation";
 import SocialLinks from "@/components/contact/SocialLinks";
 import { FloatingElement } from "@/components/animations/FloatingImages";
-import { socialMedia, locationSrc } from "@/assests/context";
+import { socialMedia } from "@/assests/context";
 
 export default function Contact() {
   return (
@@ -32,7 +32,7 @@ export default function Contact() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <Reveal>
-              <div className="bg-card rounded-2xl shadow-md p-8 border border-border/50">
+              <div className="bg-card rounded-2xl p-8 border border-border/50">
                 <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
                 <div className="space-y-4 mb-8">
                   <div className="flex items-start space-x-4">
@@ -50,7 +50,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium">Email</h3>
-                      <p className="text-muted-foreground">{socialMedia.email}</p>
+                      <p className="text-muted-foreground">{socialMedia.email.replace('mailto: ', '')}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -59,15 +59,14 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium">Phone</h3>
-                      <p className="text-muted-foreground">{socialMedia.Phone}</p>
+                      <p className="text-muted-foreground">{socialMedia.Phone.replace('tel:', '')}</p>
                     </div>
                   </div>
                 </div>
-                <div className="relative h-60 rounded-xl overflow-hidden shadow-md">
-                  {/* Replace with an actual map or image of your location */}
+                <div className="relative h-60 rounded-xl overflow-hidden">
                   <img 
-                    src={locationSrc.hyderabadSrc} 
-                    alt="Map location" 
+                    src="/public/lovable-uploads/f2064bab-2dd2-4bda-bb6e-5bb417268395.png" 
+                    alt="Profile Photo" 
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

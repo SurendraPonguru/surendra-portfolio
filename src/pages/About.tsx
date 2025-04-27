@@ -13,22 +13,19 @@ export default function About() {
       <ParticleBackground />
 
       <section className="min-h-screen">
-        <div className="container mx-auto px-4 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-            <div className="relative h-[550px] lg:h-[750px] order-1 lg:order-1 mt-[-50px]">
-              <FloatingElement className="absolute left-[10%] top-[15%] w-80 h-[400px] bg-gradient-primary/10 rounded-2xl backdrop-blur-sm" delay={0.5}>
-                <div />
-              </FloatingElement>
-              <FloatingElement className="absolute right-[10%] bottom-[15%] w-80 h-[400px] bg-gradient-accent/10 rounded-2xl backdrop-blur-sm" delay={0.3}>
-                <div />
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="relative h-[500px] lg:h-[650px] order-1 lg:order-1">
+              <FloatingElement className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
+                <div className="w-full h-full rounded-full bg-gradient-primary opacity-30 filter blur-xl"></div>
               </FloatingElement>
               
-              <FloatingElement className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[550px] overflow-hidden rounded-2xl">
-                <div className="w-full h-full glass overflow-hidden">
+              <FloatingElement className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] overflow-hidden rounded-full">
+                <div className="w-full h-full overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                    src="/public/lovable-uploads/506d2394-61d9-4fa5-b2d6-91a0655d3df5.png"
                     alt="About Me"
-                    className="w-full h-full object-cover transition-transform hover:scale-110 duration-700"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </FloatingElement>
@@ -66,7 +63,7 @@ export default function About() {
             <div className="space-y-8">
               {workExperience.map((exp, index) => (
                 <Reveal key={index}>
-                  <div className="bg-card rounded-xl p-6 shadow-md card-hover border border-border/50">
+                  <div className="bg-card rounded-xl p-6 border border-border/50">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                       <h3 className="text-xl font-bold">{exp.role} @ {exp.companyName}</h3>
                       <span className="text-sm text-primary font-medium px-3 py-1 rounded-full bg-primary/10 w-fit">
@@ -87,15 +84,15 @@ export default function About() {
             <div className="space-y-8">
               {education.map((edu, index) => (
                 <Reveal key={index}>
-                  <div className="bg-card rounded-xl p-6 shadow-md card-hover border border-border/50">
+                  <div className="bg-card rounded-xl p-6 border border-border/50">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                       <h3 className="text-xl font-bold">{edu.degree}</h3>
                       <span className="text-sm text-primary font-medium px-3 py-1 rounded-full bg-primary/10 w-fit">
                         {edu.duration}
                       </span>
                     </div>
-                    <p className="text-lg">{edu.institution} </p>
-                    <p className="text-lg"> {edu.location}</p>
+                    <p className="text-lg">{edu.institution}</p>
+                    <p className="text-lg">{edu.location}</p>
                   </div>
                 </Reveal>
               ))}
