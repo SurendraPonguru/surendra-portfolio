@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
@@ -43,11 +42,13 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg">
-                    <a href="#" download>
-                      <Download className="mr-2 h-4 w-4" />
-                      Resume
-                    </a>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    onClick={() => window.open('/FIle/Surendra Ponguru - Front-end Developer.pdf', '_blank')}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Resume
                   </Button>
                 </div>
               </Reveal>
