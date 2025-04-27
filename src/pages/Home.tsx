@@ -15,14 +15,14 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center">
         <div className="container mx-auto px-4">
           <div className="container-home grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-2 lg:order-1 space-y-4">
               <Reveal>
-                <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
                   Welcome to my portfolio
                 </span>
               </Reveal>
               <Reveal>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Hi, I'm 
                   <br />
                   <span className="gradient-text">{ProfileDetails.name}</span>
@@ -31,7 +31,7 @@ export default function Home() {
                 </h1>
               </Reveal>
               <Reveal>
-                <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+                <p className="text-lg text-muted-foreground mb-4 max-w-lg">
                   I create engaging digital experiences with attention to detail and a focus on user experience.
                 </p>
               </Reveal>
@@ -53,7 +53,7 @@ export default function Home() {
               </Reveal>
             </div>
             
-            <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] -mt-14">
+            <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] -mt-8 lg:-mt-14">
               <FloatingElement className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
                 <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-60 filter blur-xl"></div>
               </FloatingElement>

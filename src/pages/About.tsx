@@ -14,7 +14,7 @@ export default function About() {
 
       <section className="min-h-screen">
         <div className="container mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="relative h-[500px] lg:h-[650px] order-1 lg:order-1">
               <FloatingElement className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
                 <div className="w-full h-full rounded-full bg-gradient-primary opacity-30 filter blur-xl"></div>
