@@ -23,7 +23,7 @@ export default function About() {
               <FloatingElement className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] overflow-hidden rounded-full">
                 <div className="w-full h-full overflow-hidden">
                   <img
-                    src="/public/lovable-uploads/506d2394-61d9-4fa5-b2d6-91a0655d3df5.png"
+                    src="/public/lovable-uploads/32e785d4-d1ae-4c9a-a15b-3475263700e6.png"
                     alt="About Me"
                     className="w-full h-full object-cover"
                   />

@@ -65,7 +65,7 @@ export default function Home() {
               <FloatingElement className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px] overflow-hidden rounded-full">
                 <div className="w-full h-full overflow-hidden">
                   <img
-                    src="/public/lovable-uploads/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
+                    src="/public/lovable-uploads/32e785d4-d1ae-4c9a-a15b-3475263700e6.png"
                     alt="Profile Image"
                     className="w-full h-full object-cover"
                   />

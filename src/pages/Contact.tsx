@@ -65,8 +65,8 @@ export default function Contact() {
                 </div>
                 <div className="relative h-60 rounded-xl overflow-hidden">
                   <img 
-                    src="/public/lovable-uploads/f2064bab-2dd2-4bda-bb6e-5bb417268395.png" 
-                    alt="Profile Photo" 
+                    src="/public/lovable-uploads/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png" 
+                    alt="Hyderabad Cityscape" 
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
