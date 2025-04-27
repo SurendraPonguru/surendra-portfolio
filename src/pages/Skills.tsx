@@ -1,4 +1,3 @@
-
 import ParticleBackground from "@/components/animations/ParticleBackground";
 import Reveal from "@/components/animations/RevealAnimation";
 import SkillCard from "@/components/skills/SkillCard";
@@ -34,13 +33,6 @@ export default function Skills() {
       color: "bg-sky-600",
       description: "Responsive design, animations, custom utilities"
     },
-    // {
-    //   name: "Node.js",
-    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    //   level: 80,
-    //   color: "bg-green-600",
-    //   description: "RESTful APIs, Express, middleware"
-    // },
     {
       name: "TypeScript",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
@@ -48,13 +40,6 @@ export default function Skills() {
       color: "bg-blue-600",
       description: "Type definitions, interfaces, generics"
     },
-    // {
-    //   name: "MongoDB",
-    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    //   level: 70,
-    //   color: "bg-green-500",
-    //   description: "Schema design, aggregation, indexing"
-    // }
   ];
 
   const otherSkills = [
@@ -158,7 +143,6 @@ export default function Skills() {
                   Technology evolves rapidly, and I'm committed to staying current with the latest tools and best practices. I'm currently exploring:
                 </p>
                 <div className="flex flex-wrap gap-3">
-                {/* "Web3", "Next.js", "GraphQL", "Karma", "Docker" */}
                   {["Web3", "Jasmine", "Karma", "Docker"].map((tech) => (
                     <span key={tech} className="bg-white/20 px-3 py-1 rounded-full text-sm">
                       {tech}

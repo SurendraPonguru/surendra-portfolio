@@ -3,7 +3,7 @@ import ParticleBackground from "@/components/animations/ParticleBackground";
 import Reveal from "@/components/animations/RevealAnimation";
 import SocialLinks from "@/components/contact/SocialLinks";
 import { FloatingElement } from "@/components/animations/FloatingImages";
-import { socialMedia ,locationSrc } from "@/assests/context";
+import { socialMedia, locationSrc } from "@/assests/context";
 
 export default function Contact() {
   return (
