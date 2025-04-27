@@ -47,7 +47,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <NavLink to="/" className="text-2xl font-playfair font-bold gradient-text">
-            Portfolio
+            SURENDRA PONGURU
           </NavLink>
 
           {/* Desktop Navigation */}

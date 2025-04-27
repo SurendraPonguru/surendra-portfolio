@@ -30,7 +30,7 @@ function SocialLink({ href, icon, label, color }: SocialLinkProps) {
       </div>
       <div>
         <h3 className="text-white font-medium">{label}</h3>
-        <p className="text-white/80 text-sm">{href.replace(/(mailto:|tel:)/, "")}</p>
+        {/* <p className="text-white/80 text-sm">{href.replace(/(mailto:|tel:)/, "")}</p> */}
       </div>
     </a>
   );

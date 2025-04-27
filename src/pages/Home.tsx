@@ -55,18 +55,18 @@ export default function Home() {
             </div>
             
             <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] -mt-8 lg:-mt-14">
-              <FloatingElement className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
+              <FloatingElement className="absolute top-[28%] left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px]">
                 <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-60 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement delay={0.2} className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[400px] md:h-[400px]">
+              <FloatingElement delay={0.2} className="absolute top-[28%] left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[400px] md:h-[400px]">
                 <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-50 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement className="absolute top-[38%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px] overflow-hidden rounded-full">
+              <FloatingElement className="absolute top-[28%] left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px] overflow-hidden rounded-full">
                 <div className="w-full h-full overflow-hidden">
                   <img
-                    src="/public/lovable-uploads/32e785d4-d1ae-4c9a-a15b-3475263700e6.png"
+                    src="/public/lovable-uploads/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
                     alt="Profile Image"
                     className="w-full h-full object-cover"
                   />

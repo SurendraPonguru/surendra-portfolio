@@ -2,76 +2,9 @@ import ParticleBackground from "@/components/animations/ParticleBackground";
 import Reveal from "@/components/animations/RevealAnimation";
 import SkillCard from "@/components/skills/SkillCard";
 import { FloatingElement } from "@/components/animations/FloatingImages";
+import { technicalSkills ,otherSkills ,learningSkills} from "@/assests/context";
 
 export default function Skills() {
-  const technicalSkills = [
-    {
-      name: "JavaScript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-      level: 95,
-      color: "bg-yellow-500",
-      description: "Modern ES6+, async/await, functional programming"
-    },
-    {
-      name: "React",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      level: 90,
-      color: "bg-blue-500",
-      description: "React hooks, context API, custom hooks"
-    },
-    {
-      name: "Angular",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
-      level: 90,
-      color: "bg-green-600",
-      description: "Components, services, routing, RxJS"
-    },
-    {
-      name: "CSS & Tailwind",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-      level: 85,
-      color: "bg-sky-600",
-      description: "Responsive design, animations, custom utilities"
-    },
-    {
-      name: "TypeScript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-      level: 75,
-      color: "bg-blue-600",
-      description: "Type definitions, interfaces, generics"
-    },
-  ];
-
-  const otherSkills = [
-    {
-      name: "UI/UX Design",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-      level: 80,
-      color: "bg-purple-500",
-      description: "User flows, wireframing, prototyping"
-    },
-    {
-      name: "Git & GitHub",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-      level: 85,
-      color: "bg-orange-500",
-      description: "Version control, branching strategies, CI/CD"
-    },
-    {
-      name: "Performance Optimization",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg",
-      level: 75,
-      color: "bg-blue-500",
-      description: "Lazy loading, code splitting, bundle optimization"
-    },
-    {
-      name: "Responsive Design",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-      level: 90,
-      color: "bg-red-500",
-      description: "Mobile first, adaptive layouts, media queries"
-    }
-  ];
 
   return (
     <>
@@ -143,7 +76,7 @@ export default function Skills() {
                   Technology evolves rapidly, and I'm committed to staying current with the latest tools and best practices. I'm currently exploring:
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  {["Web3", "Jasmine", "Karma", "Docker"].map((tech) => (
+                  {learningSkills.map((tech) => (
                     <span key={tech} className="bg-white/20 px-3 py-1 rounded-full text-sm">
                       {tech}
                     </span>

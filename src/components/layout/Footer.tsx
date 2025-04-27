@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-xl font-bold gradient-text">Portfolio</h3>
+            <h3 className="text-xl font-bold gradient-text">Surendra Ponguru</h3>
             <p className="text-sm text-muted-foreground max-w-xs">
               A showcase of my work, skills, and experience as a developer. Feel free to reach out for collaborations.
             </p>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t pt-6 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Surendra. All rights reserved.</p>
         </div>
       </div>
     </footer>
