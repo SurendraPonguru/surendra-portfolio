@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
@@ -31,7 +32,7 @@ export default function Home() {
               </Reveal>
               <Reveal>
                 <p className="text-lg text-muted-foreground mb-4 max-w-lg">
-                  I create engaging digital experiences with attention to detail and a focus on user experience.
+                  {ProfileDetails.about}
                 </p>
               </Reveal>
               <Reveal>
@@ -66,7 +67,7 @@ export default function Home() {
               <FloatingElement className="absolute top-[28%] left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[450px] md:h-[450px] overflow-hidden rounded-full">
                 <div className="w-full h-full overflow-hidden">
                   <img
-                    src="/public/images/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
+                    src="/images/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
                     alt="Profile Image"
                     className="w-full h-full object-cover"
                   />

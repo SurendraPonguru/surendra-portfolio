@@ -3,7 +3,7 @@ import ParticleBackground from "@/components/animations/ParticleBackground";
 import Reveal from "@/components/animations/RevealAnimation";
 import SocialLinks from "@/components/contact/SocialLinks";
 import { FloatingElement } from "@/components/animations/FloatingImages";
-import { socialMedia } from "@/assests/context";
+import { socialMedia, ProfileDetails } from "@/assests/context";
 
 export default function Contact() {
   return (
@@ -41,7 +41,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium">Location</h3>
-                      <p className="text-muted-foreground">{socialMedia.address}</p>
+                      <p className="text-muted-foreground">{ProfileDetails.address}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -50,7 +50,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium">Email</h3>
-                      <p className="text-muted-foreground">{socialMedia.email.replace('mailto: ', '')}</p>
+                      <p className="text-muted-foreground">{ProfileDetails.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -59,13 +59,13 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium">Phone</h3>
-                      <p className="text-muted-foreground">{socialMedia.Phone.replace('tel:', '')}</p>
+                      <p className="text-muted-foreground">{ProfileDetails.phoneNumber}</p>
                     </div>
                   </div>
                 </div>
                 <div className="relative h-60 rounded-xl overflow-hidden">
                   <img 
-                    src="/public/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png" 
+                    src="/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png" 
                     alt="Hyderabad Cityscape" 
                     className="w-full h-full object-cover"
                   />
