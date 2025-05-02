@@ -83,14 +83,17 @@ export default function Contact() {
                 <h2 className="text-2xl font-bold mb-6">Connect With Me</h2>
                 <SocialLinks />
                 
-                <div className="mt-12 p-6 bg-gradient-primary rounded-xl text-white">
-                  <h3 className="text-xl font-bold mb-4">Looking for a developer?</h3>
-                  <p className="mb-4">
-                    I'm currently available for freelance work and open to discussing new opportunities. Let's create something amazing together!
-                  </p>
-                  <p className="text-sm">
-                    <span className="font-semibold">Response time:</span> Usually within 24 hours
-                  </p>
+                <div className="mt-12 p-6 relative bg-gradient-to-r from-primary to-accent rounded-2xl text-white overflow-hidden">
+                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-bold mb-4">Looking for a developer?</h3>
+                    <p className="mb-4">
+                      I'm currently available for freelance work and open to discussing new opportunities. Let's create something amazing together!
+                    </p>
+                    <p className="text-sm">
+                      <span className="font-semibold">Response time:</span> Usually within 24 hours
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>

@@ -125,8 +125,9 @@ export default function Home() {
       </section>
       
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-primary text-white">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative py-20 bg-gradient-to-r from-primary to-accent text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
           </Reveal>
