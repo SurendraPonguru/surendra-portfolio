@@ -46,7 +46,7 @@ export default function Home() {
                   <Button 
                     variant="outline" 
                     size="lg" 
-                    onClick={() => window.open('/FIle/Surendra Ponguru - Front-end Developer.pdf', '_blank')}
+                    onClick={() => window.open('/FIle/Surendra Ponguru -- Front-end Developer.pdf', '_blank')}
                   >
                     <Download className="mr-2 h-4 w-4" />
                     Resume
