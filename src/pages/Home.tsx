@@ -12,59 +12,60 @@ export default function Home() {
     <>
       <ParticleBackground />
       
-      <section className="relative min-h-[85vh] flex items-center py-12 sm:py-0">
+      <section className="relative min-h-[320px] sm:min-h-[450px] md:min-h-[85vh] flex items-center py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="order-2 lg:order-1 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
+            <div className="order-2 lg:order-1 space-y-3 sm:space-y-4">
               <Reveal>
-                <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
+                <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-2">
                   Welcome to my portfolio
                 </span>
               </Reveal>
               <Reveal>
-                <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
                   Hi, I'm 
                   <br />
                   <span className="gradient-text">{ProfileDetails.name}</span>
                   <br />
-                  <span className="text-2xl md:text-3xl lg:text-5xl">{ProfileDetails.domain}</span>
+                  <span className="text-xl sm:text-2xl md:text-3xl lg:text-5xl">{ProfileDetails.domain}</span>
                 </h1>
               </Reveal>
               <Reveal>
-                <p className="text-base md:text-lg text-muted-foreground mb-4 max-w-lg">
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-3 sm:mb-4 max-w-lg">
                   {ProfileDetails.about}
                 </p>
               </Reveal>
               <Reveal>
                 <div className="flex flex-wrap gap-3 md:gap-4">
-                  <Button asChild variant="default" size="lg" className="bg-gradient-primary hover:bg-gradient-primary/90">
+                  <Button asChild variant="default" size="sm" className="bg-gradient-primary hover:bg-gradient-primary/90 sm:size-lg">
                     <Link to="/projects">
                       View Projects
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                     </Link>
                   </Button>
                   <Button 
                     variant="outline" 
-                    size="lg" 
+                    size="sm"
+                    className="sm:size-lg"
                     onClick={() => window.open('/FIle/Surendra Ponguru -- Front-end Developer.pdf', '_blank')}
                   >
-                    <Download className="mr-2 h-4 w-4" />
+                    <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                     Resume
                   </Button>
                 </div>
               </Reveal>
             </div>
             
-            <div className="order-1 lg:order-2 relative h-[300px] sm:h-[400px] lg:h-[600px] -mt-0 lg:-mt-14">
-              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96">
+            <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px]">
+              <FloatingElement className="absolute inset-0 m-auto w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80">
                 <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-60 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement delay={0.2} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 sm:w-72 md:w-80 h-56 sm:h-72 md:h-80">
+              <FloatingElement delay={0.2} className="absolute inset-0 m-auto w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72">
                 <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-50 filter blur-xl"></div>
               </FloatingElement>
 
-              <FloatingElement className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 overflow-hidden rounded-full">
+              <FloatingElement className="absolute inset-0 m-auto w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72 overflow-hidden rounded-full">
                 <div className="w-full h-full overflow-hidden">
                   <img
                     src="/images/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
