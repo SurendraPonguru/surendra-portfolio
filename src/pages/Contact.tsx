@@ -10,7 +10,7 @@ export default function Contact() {
     <>
       <ParticleBackground />
 
-      <section className="min-h-screen py-8 sm:py-10 md:py-20">
+      <section className="min-h-screen py-11 sm:py-10 md:py-20">
         <div className="container mx-auto px-4">
           <div className="relative mb-8 sm:mb-10 md:mb-16">
             <FloatingElement className="absolute inset-0 -translate-y-16 m-auto w-40 sm:w-48 md:w-64 h-40 sm:h-48 md:h-64 rounded-full bg-primary/10 filter blur-3xl opacity-70">
