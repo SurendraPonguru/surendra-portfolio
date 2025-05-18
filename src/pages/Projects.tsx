@@ -11,22 +11,22 @@ export default function Projects() {
     {
       id: 1,
       title: "E-Commerce Website",
-      description: "A fully responsive e-commerce platform with product catalog, cart functionality, and secure checkout process.",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800",
-      tags: ["React", "JavaScript", "Tailwind CSS",  "Redux"],
+      description: "Experience products in a new dimension. Interact, explore, and shop in our reimagined digital space.",
+      image: "../../public/images/Surtel.png",
+      tags: ['React' ,'Tailwind CSS','shadcn-ui','TypeScript'],
       category: "web",
-      // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project"
+      liveUrl: "https://surtel-mobilestore.vercel.app/",
+      githubUrl: "https://github.com/SurendraPonguru/surtel-mobilestore"
     },
     {
       id: 2,
       title: "Portfolio Template",
       description: "A customizable portfolio template for developers and designers to showcase their work.",
-      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?auto=format&fit=crop&w=800",
-      tags: ["React", "Tailwind CSS", "Framer Motion"],
+      image: "../../public/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png",
+      tags: ["React", "Tailwind CSS", "TypeScript"],
       category: "web",
-      // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project"
+      liveUrl: "https://surendra-portfolio-three.vercel.app/",
+      githubUrl: "https://github.com/SurendraPonguru/surendra-portfolio"
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ export default function Projects() {
       tags: ["React Native", "Firebase", "Redux"],
       category: "mobile",
       // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project"
+      // githubUrl: "https://github.com/username/project"
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ export default function Projects() {
       tags: ["JavaScript", "API Integration", "CSS3"],
       category: "web",
       // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project"
+      // githubUrl: "https://github.com/username/project"
     },
     {
       id: 5,
@@ -56,7 +56,7 @@ export default function Projects() {
       tags: ["React", "Chart.js", "Social APIs"],
       category: "dashboard",
       // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project"
+      // githubUrl: "https://github.com/username/project"
     },
     {
       id: 6,
@@ -66,7 +66,7 @@ export default function Projects() {
       tags: ["React Native", "Firebase", "HealthKit"],
       category: "mobile",
       // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project"
+      // githubUrl: "https://github.com/username/project"
     }
   ];
 
@@ -122,8 +122,8 @@ export default function Projects() {
                   description={project.description}
                   image={project.image}
                   tags={project.tags}
-                  // liveUrl={project?.liveUrl}
-                  // githubUrl={project.githubUrl}
+                  liveUrl={project?.liveUrl?? ""}
+                  githubUrl={project.githubUrl ?? ""}
                 />
               </Reveal>
             ))}
