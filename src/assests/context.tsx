@@ -14,7 +14,7 @@ export const ProfileDetails = {
 export const socialMedia={
     instagram:'https://www.instagram.com/surendra_ponguru07?igsh=amVhMm8zZGFxaGJu',
     github:'https://github.com/SurendraPonguru',
-    linkedin:'https://www.linkedin.com/in/surendra-ponguru-7a0b1b1a4/',
+    linkedin:'https://www.linkedin.com/in/surendrafedev/',
     twitter:'https://twitter.com/surendra_ponguru07',  
     Phone:'tel:+91 630 063 4953',
     email:'mailto: ponguru.720@gmail.com',
@@ -127,4 +127,4 @@ export const technicalSkills = [
     }
   ];
 
-  export const learningSkills = ["Web3", "Jasmine", "Karma", "Docker","UI/UX Advance"];
+  export const learningSkills = ["Docker","Jenkins","UI/UX Advance","SQL"];

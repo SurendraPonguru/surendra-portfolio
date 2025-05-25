@@ -42,7 +42,7 @@ export default function SkillCard({
         <div className="w-full h-1 sm:h-1.5 md:h-2 bg-secondary rounded-full overflow-hidden">
           <div 
             className={`h-full ${color} transition-all duration-1000 ease-out`}
-            style={{ width: isHovered ? `${level}%` : "0%" }}
+            style={{ width: isHovered ? `${level}%` : `${level}%` }}
           />
         </div>
       </div>
