@@ -30,13 +30,13 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "Task Management App",
-      description: "A productivity app that helps users organize tasks, set deadlines, and track progress.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800",
-      tags: ["React Native", "Firebase", "Redux"],
-      category: "mobile",
-      // liveUrl: "https://example.com",
-      // githubUrl: "https://github.com/username/project"
+      title: "AI Virtual Assistant [ Aiva Chat]",
+      description: "AivaChat is a modern, responsive chatbot application .",
+      image: "/images/Aivalogo.svg",
+      tags: ["React", "TypeScript", "Tailwind CSS","Gemini API"],
+      category: "web",
+      liveUrl: "https://aiva-chat-surendrapongurus-projects.vercel.app/",
+      githubUrl: "https://github.com/SurendraPonguru/AivaChat"
     },
     {
       id: 4,
@@ -120,7 +120,7 @@ export default function Projects() {
                 <ProjectCard
                   title={project.title}
                   description={project.description}
-                  image={project.image}
+                  image={project?.image}
                   tags={project.tags}
                   liveUrl={project?.liveUrl?? ""}
                   githubUrl={project.githubUrl ?? ""}
