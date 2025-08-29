@@ -56,7 +56,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                     variant="outline"
                     size="sm"
                     className="sm:size-lg"
-                    onClick={() => window.open('/FIle/Surendra Ponguru - Front-end Developer.pdf', '_blank')}
+                    onClick={() => window.open('/FIle/Surendra Ponguru - Application Developer.pdf', '_blank')}
                   >
                     <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                     Resume
