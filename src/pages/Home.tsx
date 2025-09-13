@@ -193,7 +193,7 @@ export default function Home() {
             
             <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px]">
               <EnhancedProfileImage
-                src="/images/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
+                src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
                 alt="Profile Image"
                 className="absolute inset-0 m-auto w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72"
               />
