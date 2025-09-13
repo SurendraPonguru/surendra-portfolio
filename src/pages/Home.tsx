@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import SkillCard from "@/components/skills/SkillCard";
 import ProjectCard from "@/components/projects/ProjectCard";
 import SocialLinks from "@/components/contact/SocialLinks";
+import EnhancedProfileImage from "@/components/animations/EnhancedProfileImage";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -191,23 +192,11 @@ export default function Home() {
             </div>
             
             <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px]">
-              <FloatingElement className="absolute inset-0 m-auto w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80">
-                <div className="w-full h-full rounded-full bg-gradient-primary animate-blob opacity-60 filter blur-xl"></div>
-              </FloatingElement>
-
-              <FloatingElement delay={0.2} className="absolute inset-0 m-auto w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72">
-                <div className="w-full h-full rounded-full bg-gradient-accent animate-blob opacity-50 filter blur-xl"></div>
-              </FloatingElement>
-
-              <FloatingElement className="absolute inset-0 m-auto w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72 overflow-hidden rounded-full">
-                <div className="w-full h-full overflow-hidden">
-                  <img
-                    src="/images/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
-                    alt="Profile Image"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </FloatingElement>
+              <EnhancedProfileImage
+                src="/images/f2064bab-2dd2-4bda-bb6e-5bb417268395.png"
+                alt="Profile Image"
+                className="absolute inset-0 m-auto w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72"
+              />
             </div>
           </div>
         </div>
@@ -264,19 +253,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20">
             <div className="relative h-[260px] sm:h-[300px] md:h-[350px] lg:h-[450px] order-1 lg:order-1">
-              <FloatingElement className="absolute inset-0 m-auto w-48 sm:w-56 md:w-64 lg:w-80 h-48 sm:h-56 md:h-64 lg:h-80">
-                <div className="w-full h-full rounded-full bg-gradient-primary opacity-30 filter blur-xl"></div>
-              </FloatingElement>
-              
-              <FloatingElement className="absolute inset-0 m-auto w-44 sm:w-52 md:w-60 lg:w-72 h-44 sm:h-52 md:h-60 lg:h-72 overflow-hidden rounded-full">
-                <div className="w-full h-full overflow-hidden">
-                  <img
-                    src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
-                    alt="About Me"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </FloatingElement>
+              <EnhancedProfileImage
+                src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
+                alt="About Me"
+                className="absolute inset-0 m-auto w-44 sm:w-52 md:w-60 lg:w-72 h-44 sm:h-52 md:h-60 lg:h-72"
+              />
             </div>
 
             <div className="order-2 lg:order-2">
