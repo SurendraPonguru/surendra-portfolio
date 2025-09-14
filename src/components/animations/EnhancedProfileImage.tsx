@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { removeBackground, loadImageFromUrl } from "@/utils/backgroundRemoval";
 
 interface EnhancedProfileImageProps {
   src: string;
@@ -9,46 +8,7 @@ interface EnhancedProfileImageProps {
 }
 
 export default function EnhancedProfileImage({ src, alt, className = "" }: EnhancedProfileImageProps) {
-  const [processedImageUrl, setProcessedImageUrl] = useState<string>(src);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [hasProcessed, setHasProcessed] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    const processImage = async () => {
-      if (hasProcessed) return;
-      
-      try {
-        setIsProcessing(true);
-        console.log('Loading image for background removal...');
-        
-        const img = await loadImageFromUrl(src);
-        console.log('Image loaded, removing background...');
-        
-        const blob = await removeBackground(img);
-        const url = URL.createObjectURL(blob);
-        
-        setProcessedImageUrl(url);
-        setHasProcessed(true);
-        console.log('Background removal completed successfully');
-        
-        // Cleanup
-        return () => {
-          URL.revokeObjectURL(url);
-        };
-      } catch (error) {
-        console.error('Failed to remove background, using original image:', error);
-        setProcessedImageUrl(src);
-        setHasProcessed(true);
-      } finally {
-        setIsProcessing(false);
-      }
-    };
-
-    // Delay processing to avoid immediate load
-    const timer = setTimeout(processImage, 1000);
-    return () => clearTimeout(timer);
-  }, [src, hasProcessed]);
 
   return (
     <div className={`relative ${className}`}>
@@ -125,38 +85,15 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           ease: "easeInOut",
         }}
       >
-        {/* Shimmer effect during processing */}
-        {isProcessing && (
-          <motion.div
-            className="absolute inset-0 z-20"
-            animate={{
-              background: [
-                "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
-                "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)"
-              ],
-              x: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        )}
-        
         <motion.img
           ref={imageRef}
-          src={processedImageUrl}
+          src={src}
           alt={alt}
           className="w-full h-full object-cover"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
-          style={{
-            filter: "none",
-            transition: "filter 0.3s ease",
-          }}
         />
         
         {/* Overlay gradient for better integration */}
