@@ -151,3 +151,21 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/70;
 }
+
+/* Gradient animations */
+.bg-size-200 {
+  background-size: 200%;
+}
+
+.animate-gradient {
+  animation: gradient 4s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
