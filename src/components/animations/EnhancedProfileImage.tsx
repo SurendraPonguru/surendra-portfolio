@@ -66,8 +66,8 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
         }}
         style={{
           background: "conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))",
-          filter: "blur(20px)",
-          opacity: 0.3,
+          filter: "blur(10px)",
+          opacity: 0.2,
         }}
       />
       
@@ -154,7 +154,7 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           transition={{ duration: 0.8, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
           style={{
-            filter: isProcessing ? "blur(2px)" : "none",
+            filter: "none",
             transition: "filter 0.3s ease",
           }}
         />
