@@ -25,6 +25,12 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
     e.preventDefault();
     e.stopPropagation();
     e.nativeEvent?.stopImmediatePropagation();
+    
+    // Ensure no navigation occurs
+    if (e.currentTarget && 'href' in e.currentTarget) {
+      e.currentTarget.removeAttribute('href');
+    }
+    
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -40,7 +46,10 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
         variant="outline" 
         className="group bg-gradient-to-r from-primary/10 to-accent/10 border-primary/30 hover:from-primary/20 hover:to-accent/20 transition-all duration-300"
         onClick={openModal}
+        onPointerDown={(e) => e.stopPropagation()}
+        onMouseDown={(e) => e.stopPropagation()}
         type="button"
+        style={{ pointerEvents: 'auto' }}
       >
         <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
         View Resume
