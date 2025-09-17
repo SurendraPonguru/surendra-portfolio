@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Settings } from "lucide-react";
 import ParticleBackground from "@/components/animations/ParticleBackground";
 import { FloatingElement } from "@/components/animations/FloatingImages";
 import Reveal from "@/components/animations/RevealAnimation";
@@ -13,9 +13,12 @@ import SkillCard from "@/components/skills/SkillCard";
 import ProjectCard from "@/components/projects/ProjectCard";
 import SocialLinks from "@/components/contact/SocialLinks";
 import EnhancedProfileImage from "@/components/animations/EnhancedProfileImage";
+import AchievementsSection from "@/components/achievements/AchievementsSection";
+import CustomizationPanel from "@/components/customization/CustomizationPanel";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const [isCustomizationOpen, setIsCustomizationOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   
   const { ref: homeRef, inView: homeInView } = useInView({ threshold: 0.3 });
@@ -121,6 +124,28 @@ export default function Home() {
   return (
     <>
       <ParticleBackground />
+      
+      {/* Customization Panel */}
+      <CustomizationPanel 
+        isOpen={isCustomizationOpen} 
+        onClose={() => setIsCustomizationOpen(false)} 
+      />
+
+      {/* Floating customization button */}
+      <motion.div
+        className="fixed top-20 right-6 z-40"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1 }}
+      >
+        <Button
+          onClick={() => setIsCustomizationOpen(true)}
+          className="rounded-full w-12 h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-accent"
+          title="Customize Portfolio"
+        >
+          <Settings className="w-5 h-5" />
+        </Button>
+      </motion.div>
       
       {/* Home Section */}
       <section id="home" ref={homeRef} className="relative min-h-[320px] sm:min-h-[450px] md:min-h-[85vh] flex items-center py-8 sm:py-10 md:py-12">
@@ -247,6 +272,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Achievements Section */}
+      <AchievementsSection />
 
       {/* About Section */}
       <section id="about" ref={aboutRef} className="min-h-screen py-16 md:py-20">
