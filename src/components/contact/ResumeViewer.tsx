@@ -24,6 +24,7 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
   const openModal = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    e.nativeEvent?.stopImmediatePropagation();
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
   };
