@@ -102,10 +102,10 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
               </div>
               
               {/* PDF Content */}
-              <div className="flex-1 p-6 h-[calc(90vh-120px)] overflow-hidden">
+              <div className="flex-1 p-1 h-[calc(90vh-32px)] overflow-hidden">
                 <div className="w-full h-full rounded-lg overflow-hidden border border-border/30 bg-background">
                   <iframe
-                    src={`${resumeUrl}#scrollbar=1`}
+                    src={`${resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
                     className="w-full h-full"
                     title={resumeTitle}
                     onLoad={() => console.log('PDF loaded in iframe')}
