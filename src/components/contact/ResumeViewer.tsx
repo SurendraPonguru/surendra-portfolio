@@ -22,6 +22,7 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
   };
 
   const openModal = (e: React.MouseEvent) => {
+    console.log('Button clicked, opening modal');
     e.preventDefault();
     e.stopPropagation();
     e.nativeEvent?.stopImmediatePropagation();
@@ -31,6 +32,7 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
       e.currentTarget.removeAttribute('href');
     }
     
+    console.log('Setting modal to open');
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -102,10 +104,12 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
               {/* PDF Content */}
               <div className="flex-1 p-6 h-[calc(90vh-120px)] overflow-hidden">
                 <div className="w-full h-full rounded-lg overflow-hidden border border-border/30 bg-background">
-                  <object
-                    data={`${resumeUrl}#toolbar=1&navpanes=1&scrollbar=1`}
-                    type="application/pdf"
+                  <iframe
+                    src={`${resumeUrl}#toolbar=1&navpanes=1&scrollbar=1`}
                     className="w-full h-full"
+                    title={resumeTitle}
+                    onLoad={() => console.log('PDF loaded in iframe')}
+                    onError={() => console.log('PDF failed to load in iframe')}
                   >
                     <div className="flex flex-col items-center justify-center h-full p-8 text-center">
                       <FileText className="w-16 h-16 text-muted-foreground mb-4" />
@@ -118,7 +122,7 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
                         Download Resume
                       </Button>
                     </div>
-                  </object>
+                  </iframe>
                 </div>
               </div>
             </motion.div>
