@@ -159,7 +159,7 @@ export default function CustomizationPanel({ isOpen, onClose }: CustomizationPan
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border/50">
+            <div className="flex items-center justify-between p-1 border-b border-border/50">
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <Settings className="w-5 h-5 text-primary" />

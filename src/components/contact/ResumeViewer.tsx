@@ -53,8 +53,8 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
         type="button"
         style={{ pointerEvents: 'auto' }}
       >
-        <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-        View Resume
+      <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+        Resume
       </Button>
 
       <AnimatePresence>
@@ -78,7 +78,7 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-border/50 bg-card/95 backdrop-blur-sm">
+              <div className="flex items-center justify-between p-1 border-b border-border/50 bg-card/95 backdrop-blur-sm">
                 <h2 className="text-xl font-bold">{resumeTitle}</h2>
                 <div className="flex items-center gap-2">
                   <Button
@@ -105,7 +105,7 @@ export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerPro
               <div className="flex-1 p-6 h-[calc(90vh-120px)] overflow-hidden">
                 <div className="w-full h-full rounded-lg overflow-hidden border border-border/30 bg-background">
                   <iframe
-                    src={`${resumeUrl}#toolbar=1&navpanes=1&scrollbar=1`}
+                    src={`${resumeUrl}#scrollbar=1`}
                     className="w-full h-full"
                     title={resumeTitle}
                     onLoad={() => console.log('PDF loaded in iframe')}

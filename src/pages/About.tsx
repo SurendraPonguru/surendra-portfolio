@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Reveal from "@/components/animations/RevealAnimation";
 import { workExperience, education, ProfileDetails } from "@/assests/context";
+import ResumeViewer from "@/components/contact/ResumeViewer";
 
 export default function About() {
   return (
@@ -52,7 +53,8 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                     <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Link>
                 </Button>
-                <Button 
+                 <ResumeViewer resumeUrl={"/FIle/Surendra Ponguru - Application Developer.pdf"} resumeTitle={"Surendra Ponguru - Frontend Developer"} />
+                {/* <Button 
                     variant="outline"
                     size="sm"
                     className="sm:size-lg"
@@ -60,7 +62,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                   >
                     <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                     Resume
-                  </Button>
+                  </Button> */}
               </Reveal>
             </div>
           </div>

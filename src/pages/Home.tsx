@@ -16,6 +16,7 @@ import EnhancedProfileImage from "@/components/animations/EnhancedProfileImage";
 import AchievementsSection from "@/components/achievements/AchievementsSection";
 import CustomizationPanel from "@/components/customization/CustomizationPanel";
 import { motion } from "framer-motion";
+import ResumeViewer from "@/components/contact/ResumeViewer";
 
 export default function Home() {
   const [isCustomizationOpen, setIsCustomizationOpen] = useState(false);
@@ -203,7 +204,8 @@ export default function Home() {
                     View Projects
                     <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
-                  <Button 
+                  <ResumeViewer resumeUrl={"/FIle/Surendra Ponguru - Application Developer.pdf"} resumeTitle={"Surendra Ponguru - Frontend Developer"} />
+                  {/* <Button 
                     variant="outline" 
                     size="sm"
                     className="sm:size-lg"
@@ -211,7 +213,7 @@ export default function Home() {
                   >
                     <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                     Resume
-                  </Button>
+                  </Button> */}
                 </div>
               </Reveal>
             </div>
@@ -307,7 +309,9 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                   Contact Me
                   <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
-                <Button 
+                <ResumeViewer resumeUrl={"/FIle/Surendra Ponguru - Application Developer.pdf"} resumeTitle={"Surendra Ponguru - Frontend Developer"} />
+                
+                {/* <Button 
                     variant="outline"
                     size="sm"
                     className="sm:size-lg"
@@ -315,7 +319,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                   >
                     <Download className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                     Resume
-                  </Button>
+                  </Button> */}
               </Reveal>
             </div>
           </div>
