@@ -33,62 +33,82 @@ interface LayoutOption {
 
 const colorThemes: ColorTheme[] = [
   {
+    name: "Default Purple",
+    primary: "262 83% 58%",
+    accent: "176 59% 88%",
+    background: "0 0% 100%",
+    preview: "bg-gradient-to-r from-purple-600 to-cyan-500",
+  },
+  {
     name: "Ocean Blue",
-    primary: "hsl(210, 100%, 50%)",
-    accent: "hsl(195, 100%, 60%)",
-    background: "hsl(210, 20%, 98%)",
+    primary: "210 100% 50%",
+    accent: "195 100% 60%",
+    background: "210 20% 98%",
     preview: "bg-gradient-to-r from-blue-500 to-cyan-500",
   },
   {
     name: "Sunset Orange",
-    primary: "hsl(25, 100%, 55%)",
-    accent: "hsl(45, 100%, 60%)",
-    background: "hsl(25, 20%, 98%)",
+    primary: "25 100% 55%",
+    accent: "45 100% 60%",
+    background: "25 20% 98%",
     preview: "bg-gradient-to-r from-orange-500 to-yellow-500",
   },
   {
     name: "Forest Green",
-    primary: "hsl(120, 60%, 45%)",
-    accent: "hsl(90, 60%, 55%)",
-    background: "hsl(120, 20%, 98%)",
+    primary: "120 60% 45%",
+    accent: "90 60% 55%",
+    background: "120 20% 98%",
     preview: "bg-gradient-to-r from-green-600 to-lime-500",
   },
   {
-    name: "Royal Purple",
-    primary: "hsl(270, 70%, 55%)",
-    accent: "hsl(300, 70%, 60%)",
-    background: "hsl(270, 20%, 98%)",
-    preview: "bg-gradient-to-r from-purple-600 to-pink-500",
-  },
-  {
     name: "Rose Gold",
-    primary: "hsl(350, 80%, 60%)",
-    accent: "hsl(30, 80%, 70%)",
-    background: "hsl(350, 20%, 98%)",
+    primary: "350 80% 60%",
+    accent: "30 80% 70%",
+    background: "350 20% 98%",
     preview: "bg-gradient-to-r from-rose-500 to-amber-400",
   },
 ];
 
-const fontOptions: FontOption[] = [
+const themePresets = [
   {
-    name: "Inter",
-    family: "Inter, sans-serif",
-    preview: "Modern & Clean",
+    name: "Modern Purple",
+    primary: "262 83% 58%",
+    accent: "176 59% 88%",
+    secondary: "214 32% 91%",
+    font: "Poppins, sans-serif",
+    headingFont: "Playfair Display, serif",
   },
   {
-    name: "Poppins",
-    family: "Poppins, sans-serif",
-    preview: "Friendly & Rounded",
+    name: "Ocean Professional",
+    primary: "210 100% 50%",
+    accent: "195 100% 75%",
+    secondary: "210 32% 91%",
+    font: "Inter, sans-serif",
+    headingFont: "Inter, sans-serif",
   },
   {
-    name: "JetBrains Mono",
-    family: "JetBrains Mono, monospace",
-    preview: "Code & Technical",
+    name: "Warm Creative",
+    primary: "25 100% 55%",
+    accent: "45 100% 75%",
+    secondary: "25 32% 91%",
+    font: "Poppins, sans-serif",
+    headingFont: "Playfair Display, serif",
   },
   {
-    name: "Playfair Display",
-    family: "Playfair Display, serif",
-    preview: "Elegant & Classic",
+    name: "Nature Fresh",
+    primary: "120 60% 45%",
+    accent: "90 60% 75%",
+    secondary: "120 32% 91%",
+    font: "Inter, sans-serif",
+    headingFont: "Poppins, sans-serif",
+  },
+  {
+    name: "Elegant Rose",
+    primary: "350 80% 60%",
+    accent: "30 80% 80%",
+    secondary: "350 32% 91%",
+    font: "Playfair Display, serif",
+    headingFont: "Playfair Display, serif",
   },
 ];
 
@@ -116,17 +136,37 @@ const layoutOptions: LayoutOption[] = [
 ];
 
 export default function CustomizationPanel({ isOpen, onClose }: CustomizationPanelProps) {
-  const [selectedTheme, setSelectedTheme] = useState(colorThemes[0]);
-  const [selectedFont, setSelectedFont] = useState(fontOptions[0]);
-  const [selectedLayout, setSelectedLayout] = useState(layoutOptions[0]);
+  const [selectedPreset, setSelectedPreset] = useState(themePresets[0]);
   const [applied, setApplied] = useState(false);
 
   const handleApplyChanges = () => {
-    // Apply theme changes to CSS variables
-    document.documentElement.style.setProperty('--primary', selectedTheme.primary);
-    document.documentElement.style.setProperty('--accent', selectedTheme.accent);
-    document.documentElement.style.setProperty('--background', selectedTheme.background);
-    document.documentElement.style.fontFamily = selectedFont.family;
+    const root = document.documentElement;
+    const isDark = root.classList.contains('dark');
+    
+    // Apply theme changes to CSS variables (HSL values without hsl() wrapper)
+    root.style.setProperty('--primary', selectedPreset.primary);
+    root.style.setProperty('--accent', selectedPreset.accent);
+    root.style.setProperty('--secondary', selectedPreset.secondary);
+    
+    // Update dark mode colors appropriately
+    if (isDark) {
+      root.style.setProperty('--accent-foreground', '0 0% 98%');
+      root.style.setProperty('--secondary-foreground', '0 0% 98%');
+    } else {
+      root.style.setProperty('--accent-foreground', '240 5.9% 10%');
+      root.style.setProperty('--secondary-foreground', '222 47% 11%');
+    }
+    
+    // Apply fonts
+    root.style.setProperty('--font-body', selectedPreset.font);
+    root.style.setProperty('--font-heading', selectedPreset.headingFont);
+    
+    // Update font classes
+    document.body.style.fontFamily = selectedPreset.font;
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    headings.forEach(heading => {
+      (heading as HTMLElement).style.fontFamily = selectedPreset.headingFont;
+    });
     
     setApplied(true);
     setTimeout(() => setApplied(false), 2000);
@@ -178,131 +218,69 @@ export default function CustomizationPanel({ isOpen, onClose }: CustomizationPan
 
             {/* Content */}
             <div className="p-6 h-[calc(80vh-140px)] overflow-y-auto">
-              <Tabs defaultValue="colors" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="colors" className="flex items-center space-x-2">
-                    <Palette className="w-4 h-4" />
-                    <span>Colors</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="fonts" className="flex items-center space-x-2">
-                    <Type className="w-4 h-4" />
-                    <span>Fonts</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="layout" className="flex items-center space-x-2">
-                    <Layout className="w-4 h-4" />
-                    <span>Layout</span>
-                  </TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="colors" className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Choose Your Color Theme</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {colorThemes.map((theme, index) => (
-                        <motion.div
-                          key={theme.name}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Choose Your Theme Style</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {themePresets.map((preset, index) => (
+                      <motion.div
+                        key={preset.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <Card
+                          className={cn(
+                            "p-4 cursor-pointer transition-all duration-300 hover:shadow-lg",
+                            selectedPreset.name === preset.name
+                              ? "border-primary shadow-md ring-2 ring-primary/20"
+                              : "border-border hover:border-primary/50"
+                          )}
+                          onClick={() => setSelectedPreset(preset)}
                         >
-                          <Card
-                            className={cn(
-                              "p-4 cursor-pointer transition-all duration-300 hover:shadow-lg",
-                              selectedTheme.name === theme.name
-                                ? "border-primary shadow-md"
-                                : "border-border hover:border-primary/50"
-                            )}
-                            onClick={() => setSelectedTheme(theme)}
-                          >
-                            <div className={cn("h-20 rounded-lg mb-3", theme.preview)} />
-                            <h4 className="font-medium">{theme.name}</h4>
-                            <p className="text-sm text-muted-foreground">
-                              {selectedTheme.name === theme.name ? "Selected" : "Click to select"}
-                            </p>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="fonts" className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Choose Your Font</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {fontOptions.map((font, index) => (
-                        <motion.div
-                          key={font.name}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Card
-                            className={cn(
-                              "p-4 cursor-pointer transition-all duration-300 hover:shadow-lg",
-                              selectedFont.name === font.name
-                                ? "border-primary shadow-md"
-                                : "border-border hover:border-primary/50"
-                            )}
-                            onClick={() => setSelectedFont(font)}
-                          >
-                            <h4 
-                              className="font-medium text-lg mb-2"
-                              style={{ fontFamily: font.family }}
-                            >
-                              {font.name}
-                            </h4>
+                          {/* Theme Preview */}
+                          <div className="h-16 rounded-lg mb-3 flex overflow-hidden">
+                            <div 
+                              className="flex-1"
+                              style={{ backgroundColor: `hsl(${preset.primary})` }}
+                            />
+                            <div 
+                              className="flex-1"
+                              style={{ backgroundColor: `hsl(${preset.accent})` }}
+                            />
+                            <div 
+                              className="flex-1"
+                              style={{ backgroundColor: `hsl(${preset.secondary})` }}
+                            />
+                          </div>
+                          
+                          <h4 className="font-medium text-base mb-2">{preset.name}</h4>
+                          
+                          {/* Font Preview */}
+                          <div className="space-y-1 mb-3">
                             <p 
-                              className="text-muted-foreground"
-                              style={{ fontFamily: font.family }}
+                              className="text-sm text-muted-foreground"
+                              style={{ fontFamily: preset.font }}
                             >
-                              {font.preview}
+                              Body: {preset.font.split(',')[0]}
                             </p>
-                            <p className="text-xs text-muted-foreground mt-2">
-                              {selectedFont.name === font.name ? "Selected" : "Click to select"}
+                            <p 
+                              className="text-sm text-muted-foreground"
+                              style={{ fontFamily: preset.headingFont }}
+                            >
+                              Heading: {preset.headingFont.split(',')[0]}
                             </p>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
+                          </div>
+                          
+                          <p className="text-xs text-muted-foreground">
+                            {selectedPreset.name === preset.name ? "✓ Selected" : "Click to select"}
+                          </p>
+                        </Card>
+                      </motion.div>
+                    ))}
                   </div>
-                </TabsContent>
-
-                <TabsContent value="layout" className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Choose Your Layout</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {layoutOptions.map((layout, index) => (
-                        <motion.div
-                          key={layout.name}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Card
-                            className={cn(
-                              "p-4 cursor-pointer transition-all duration-300 hover:shadow-lg",
-                              selectedLayout.name === layout.name
-                                ? "border-primary shadow-md"
-                                : "border-border hover:border-primary/50"
-                            )}
-                            onClick={() => setSelectedLayout(layout)}
-                          >
-                            <div className="text-3xl mb-3">{layout.preview}</div>
-                            <h4 className="font-medium">{layout.name}</h4>
-                            <p className="text-sm text-muted-foreground">
-                              {layout.description}
-                            </p>
-                            <p className="text-xs text-muted-foreground mt-2">
-                              {selectedLayout.name === layout.name ? "Selected" : "Click to select"}
-                            </p>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </TabsContent>
-              </Tabs>
+                </div>
+              </div>
             </div>
 
             {/* Footer */}
