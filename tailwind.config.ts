@@ -140,9 +140,10 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-primary': 'linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%)',
-				'gradient-secondary': 'linear-gradient(90deg, hsla(39, 100%, 77%, 1) 0%, hsla(22, 90%, 57%, 1) 100%)',
-				'gradient-accent': 'linear-gradient(90deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%)',
+				'gradient-primary': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))',
+				'gradient-secondary': 'linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--muted)))',
+				'gradient-accent': 'linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)))',
+				'gradient-modern': 'linear-gradient(135deg, hsl(221 89% 64%), hsl(267 89% 85%))',
 			}
 		}
 	},

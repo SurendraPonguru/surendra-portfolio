@@ -71,45 +71,59 @@ const colorThemes: ColorTheme[] = [
 
 const themePresets = [
   {
-    name: "Modern Purple",
-    primary: "262 83% 58%",
-    accent: "176 59% 88%",
-    secondary: "214 32% 91%",
-    font: "Poppins, sans-serif",
-    headingFont: "Playfair Display, serif",
-  },
-  {
-    name: "Ocean Professional",
-    primary: "210 100% 50%",
-    accent: "195 100% 75%",
-    secondary: "210 32% 91%",
+    name: "Midnight Pro",
+    primary: "221 89% 64%",
+    accent: "267 89% 85%",
+    secondary: "218 25% 95%",
     font: "Inter, sans-serif",
     headingFont: "Inter, sans-serif",
+    description: "Professional blue with sophisticated accents"
   },
   {
-    name: "Warm Creative",
-    primary: "25 100% 55%",
-    accent: "45 100% 75%",
-    secondary: "25 32% 91%",
+    name: "Emerald Elite",
+    primary: "142 76% 36%",
+    accent: "158 64% 84%",
+    secondary: "142 25% 94%",
     font: "Poppins, sans-serif",
-    headingFont: "Playfair Display, serif",
-  },
-  {
-    name: "Nature Fresh",
-    primary: "120 60% 45%",
-    accent: "90 60% 75%",
-    secondary: "120 32% 91%",
-    font: "Inter, sans-serif",
     headingFont: "Poppins, sans-serif",
+    description: "Modern green for nature-inspired professionals"
   },
   {
-    name: "Elegant Rose",
-    primary: "350 80% 60%",
-    accent: "30 80% 80%",
-    secondary: "350 32% 91%",
+    name: "Coral Luxury",
+    primary: "16 94% 65%",
+    accent: "24 95% 88%",
+    secondary: "16 25% 96%",
     font: "Playfair Display, serif",
     headingFont: "Playfair Display, serif",
+    description: "Warm coral with premium elegance"
   },
+  {
+    name: "Violet Vision",
+    primary: "262 89% 64%",
+    accent: "268 84% 88%",
+    secondary: "262 25% 95%",
+    font: "Poppins, sans-serif",
+    headingFont: "Playfair Display, serif",
+    description: "Creative purple for innovative minds"
+  },
+  {
+    name: "Slate Modern",
+    primary: "215 28% 17%",
+    accent: "215 20% 80%",
+    secondary: "215 15% 92%",
+    font: "Inter, sans-serif",
+    headingFont: "Inter, sans-serif",
+    description: "Minimal slate for clean aesthetics"
+  },
+  {
+    name: "Amber Glow",
+    primary: "38 92% 50%",
+    accent: "48 96% 85%",
+    secondary: "38 25% 95%",
+    font: "Poppins, sans-serif",
+    headingFont: "Poppins, sans-serif",
+    description: "Energetic amber for dynamic personalities"
+  }
 ];
 
 const layoutOptions: LayoutOption[] = [
@@ -256,25 +270,28 @@ export default function CustomizationPanel({ isOpen, onClose }: CustomizationPan
                           
                           <h4 className="font-medium text-base mb-2">{preset.name}</h4>
                           
+                          <p className="text-xs text-muted-foreground/80 mb-3 leading-relaxed">
+                            {preset.description}
+                          </p>
+                          
                           {/* Font Preview */}
                           <div className="space-y-1 mb-3">
                             <p 
-                              className="text-sm text-muted-foreground"
+                              className="text-xs text-muted-foreground"
                               style={{ fontFamily: preset.font }}
                             >
-                              Body: {preset.font.split(',')[0]}
-                            </p>
-                            <p 
-                              className="text-sm text-muted-foreground"
-                              style={{ fontFamily: preset.headingFont }}
-                            >
-                              Heading: {preset.headingFont.split(',')[0]}
+                              Font: {preset.font.split(',')[0]}
                             </p>
                           </div>
                           
-                          <p className="text-xs text-muted-foreground">
-                            {selectedPreset.name === preset.name ? "✓ Selected" : "Click to select"}
-                          </p>
+                          <div className="flex items-center justify-between">
+                            <p className="text-xs text-muted-foreground">
+                              {selectedPreset.name === preset.name ? "✓ Active Theme" : "Select Theme"}
+                            </p>
+                            {selectedPreset.name === preset.name && (
+                              <div className="w-2 h-2 bg-primary rounded-full"></div>
+                            )}
+                          </div>
                         </Card>
                       </motion.div>
                     ))}

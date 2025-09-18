@@ -200,7 +200,7 @@ export default function Home() {
               </Reveal>
               <Reveal>
                 <div className="flex flex-wrap gap-3 md:gap-4">
-                  <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:bg-gradient-primary/90 sm:size-lg">
+                  <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity sm:size-lg">
                     View Projects
                     <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
@@ -305,7 +305,7 @@ export default function Home() {
 I am currently working at {workExperience[0].companyName}, where I've been involved in developing scalable front-end solutions for various clients. My work involves collaborating closely with cross-functional teams to deliver high-quality products that meet client requirements and exceed user expectations.     </p>
               </Reveal>
               <Reveal className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
-                <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:bg-gradient-primary/90 sm:size-lg">
+                <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity sm:size-lg">
                   Contact Me
                   <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
