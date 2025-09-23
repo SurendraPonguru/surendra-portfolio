@@ -71,58 +71,58 @@ const colorThemes: ColorTheme[] = [
 
 const themePresets = [
   {
-    name: "Midnight Pro",
-    primary: "221 89% 64%",
-    accent: "267 89% 85%",
-    secondary: "218 25% 95%",
-    font: "Inter, sans-serif",
-    headingFont: "Inter, sans-serif",
-    description: "Professional blue with sophisticated accents"
-  },
-  {
-    name: "Emerald Elite",
-    primary: "142 76% 36%",
-    accent: "158 64% 84%",
-    secondary: "142 25% 94%",
+    name: "Cyber Fusion",
+    primary: "200 100% 60%",
+    accent: "280 100% 70%",
+    secondary: "210 30% 8%",
     font: "Poppins, sans-serif",
     headingFont: "Poppins, sans-serif",
-    description: "Modern green for nature-inspired professionals"
+    description: "Futuristic cyan-purple blend for tech innovators"
   },
   {
-    name: "Coral Luxury",
-    primary: "16 94% 65%",
-    accent: "24 95% 88%",
-    secondary: "16 25% 96%",
+    name: "Neon Dreams",
+    primary: "315 100% 65%",
+    accent: "180 100% 60%",
+    secondary: "210 30% 8%",
+    font: "Inter, sans-serif",
+    headingFont: "Inter, sans-serif",
+    description: "Electric magenta-cyan for creative professionals"
+  },
+  {
+    name: "Aurora Borealis",
+    primary: "270 100% 70%",
+    accent: "140 80% 60%",
+    secondary: "210 30% 8%",
     font: "Playfair Display, serif",
     headingFont: "Playfair Display, serif",
-    description: "Warm coral with premium elegance"
+    description: "Mystical purple-green inspired by northern lights"
   },
   {
-    name: "Violet Vision",
-    primary: "262 89% 64%",
-    accent: "268 84% 88%",
-    secondary: "262 25% 95%",
-    font: "Poppins, sans-serif",
-    headingFont: "Playfair Display, serif",
-    description: "Creative purple for innovative minds"
-  },
-  {
-    name: "Slate Modern",
-    primary: "215 28% 17%",
-    accent: "215 20% 80%",
-    secondary: "215 15% 92%",
-    font: "Inter, sans-serif",
-    headingFont: "Inter, sans-serif",
-    description: "Minimal slate for clean aesthetics"
-  },
-  {
-    name: "Amber Glow",
-    primary: "38 92% 50%",
-    accent: "48 96% 85%",
-    secondary: "38 25% 95%",
+    name: "Electric Storm",
+    primary: "60 100% 60%",
+    accent: "300 100% 65%",
+    secondary: "210 30% 8%",
     font: "Poppins, sans-serif",
     headingFont: "Poppins, sans-serif",
-    description: "Energetic amber for dynamic personalities"
+    description: "High-energy yellow-purple for bold statements"
+  },
+  {
+    name: "Plasma Wave",
+    primary: "340 100% 65%",
+    accent: "200 100% 70%",
+    secondary: "210 30% 8%",
+    font: "Inter, sans-serif",
+    headingFont: "Inter, sans-serif",
+    description: "Dynamic pink-blue for modern innovators"
+  },
+  {
+    name: "Matrix Code",
+    primary: "120 100% 50%",
+    accent: "160 100% 60%",
+    secondary: "210 30% 8%",
+    font: "Courier New, monospace",
+    headingFont: "Poppins, sans-serif",
+    description: "Classic green matrix theme for developers"
   }
 ];
 

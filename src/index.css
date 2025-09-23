@@ -7,82 +7,96 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 210 20% 2%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 0 0% 98%;
+    --card-foreground: 210 20% 2%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 210 20% 2%;
 
-    --primary: 221 89% 64%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 218 25% 95%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 210 20% 95%;
+    --secondary-foreground: 210 20% 2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 237 13% 40%;
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 267 89% 85%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 280 100% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 200 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
+
+    /* Modern gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(200 100% 50%), hsl(280 100% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(280 100% 60%), hsl(200 100% 50%));
+    --gradient-subtle: linear-gradient(135deg, hsl(210 20% 95%), hsl(0 0% 100%));
+    --shadow-primary: 0 20px 40px -15px hsl(200 100% 50% / 0.3);
+    --shadow-glow: 0 0 60px hsl(200 100% 60% / 0.2);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-primary: 200 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 280 100% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 200 100% 50%;
   }
 
   .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
+    --background: 210 20% 2%;
+    --foreground: 210 40% 98%;
 
-    --card: 240 10% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 210 20% 4%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 10% 4%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 210 20% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 221 89% 64%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 200 100% 60%;
+    --primary-foreground: 210 20% 2%;
 
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 210 30% 8%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 210 30% 8%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 267 89% 64%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 210 20% 2%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 210 30% 8%;
+    --input: 210 30% 8%;
+    --ring: 200 100% 60%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Modern dark theme gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 100% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(280 100% 70%), hsl(200 100% 60%));
+    --gradient-subtle: linear-gradient(135deg, hsl(210 30% 8%), hsl(210 20% 4%));
+    --shadow-primary: 0 20px 40px -15px hsl(200 100% 60% / 0.4);
+    --shadow-glow: 0 0 60px hsl(200 100% 70% / 0.3);
+
+    --sidebar-background: 210 20% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 200 100% 60%;
+    --sidebar-primary-foreground: 210 20% 2%;
+    --sidebar-accent: 280 100% 70%;
+    --sidebar-accent-foreground: 210 20% 2%;
+    --sidebar-border: 210 30% 8%;
+    --sidebar-ring: 200 100% 60%;
   }
 }
 
@@ -152,26 +166,36 @@
   @apply bg-primary/70;
 }
 
-/* Animated Patterns */
+/* Enhanced Animated Patterns */
 .pattern-dots {
-  background-image: radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px);
-  background-size: 20px 20px;
-  animation: pattern-float 20s ease-in-out infinite;
+  background-image: radial-gradient(circle, hsl(var(--primary) / 0.8) 1.5px, transparent 1.5px);
+  background-size: 25px 25px;
+  animation: pattern-float 25s ease-in-out infinite;
 }
 
 .pattern-grid {
   background-image: 
-    linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
-  background-size: 25px 25px;
-  animation: pattern-slide 15s linear infinite;
+    linear-gradient(hsl(var(--primary) / 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--accent) / 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: pattern-slide 20s linear infinite;
 }
 
 .pattern-waves {
   background-image: 
-    radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.15) 0%, transparent 50%);
-  animation: pattern-wave 12s ease-in-out infinite;
+    radial-gradient(circle at 25% 75%, hsl(var(--primary) / 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 75% 25%, hsl(var(--accent) / 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1) 0%, transparent 80%);
+  animation: pattern-wave 18s ease-in-out infinite;
+}
+
+.pattern-neural {
+  background-image: 
+    radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.3) 2px, transparent 2px),
+    radial-gradient(circle at 80% 80%, hsl(var(--accent) / 0.3) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 40% 60%, hsl(var(--primary) / 0.2) 1px, transparent 1px);
+  background-size: 50px 50px, 35px 35px, 20px 20px;
+  animation: pattern-neural 30s ease-in-out infinite;
 }
 
 /* Gradient animations */
@@ -218,9 +242,31 @@
 
 @keyframes pattern-wave {
   0%, 100% {
-    background-position: 20% 80%, 80% 20%;
+    background-position: 25% 75%, 75% 25%, 50% 50%;
+  }
+  33% {
+    background-position: 75% 25%, 25% 75%, 80% 20%;
+  }
+  66% {
+    background-position: 50% 50%, 80% 80%, 20% 80%;
+  }
+}
+
+@keyframes pattern-neural {
+  0%, 100% {
+    background-position: 0% 0%, 0% 0%, 0% 0%;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    background-position: 25% 25%, 75% 25%, 50% 75%;
+    transform: scale(1.05) rotate(90deg);
   }
   50% {
-    background-position: 80% 20%, 20% 80%;
+    background-position: 50% 50%, 50% 50%, 75% 25%;
+    transform: scale(1) rotate(180deg);
+  }
+  75% {
+    background-position: 75% 75%, 25% 75%, 25% 50%;
+    transform: scale(1.05) rotate(270deg);
   }
 }

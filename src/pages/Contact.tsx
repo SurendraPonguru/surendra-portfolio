@@ -70,14 +70,16 @@ export default function Contact() {
             />
             
             <Reveal>
-              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-center relative z-10">
-                <span className="gradient-text">Let's Connect</span>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-center relative z-10">
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient bg-size-200">
+                  Let's Connect
+                </span>
                 <br />
-                <span className="text-foreground/80">& Create Together</span>
+                <span className="text-foreground/90 text-2xl sm:text-3xl md:text-5xl lg:text-6xl">& Create Together</span>
               </h1>
             </Reveal>
             <Reveal>
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-16 relative z-10 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground text-center max-w-4xl mx-auto mb-10 sm:mb-12 md:mb-20 relative z-10 leading-relaxed font-medium">
                 Ready to turn ideas into reality? I'm passionate about collaborating on innovative projects that make a difference. Let's discuss how we can build something extraordinary together.
               </p>
             </Reveal>
