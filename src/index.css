@@ -152,6 +152,28 @@
   @apply bg-primary/70;
 }
 
+/* Animated Patterns */
+.pattern-dots {
+  background-image: radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: pattern-float 20s ease-in-out infinite;
+}
+
+.pattern-grid {
+  background-image: 
+    linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+  background-size: 25px 25px;
+  animation: pattern-slide 15s linear infinite;
+}
+
+.pattern-waves {
+  background-image: 
+    radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.15) 0%, transparent 50%);
+  animation: pattern-wave 12s ease-in-out infinite;
+}
+
 /* Gradient animations */
 .bg-size-200 {
   background-size: 200%;
@@ -167,5 +189,38 @@
   }
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes pattern-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    background-position: 0% 0%;
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+    background-position: 30% 30%;
+  }
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+    background-position: 70% 70%;
+  }
+}
+
+@keyframes pattern-slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 25px 25px;
+  }
+}
+
+@keyframes pattern-wave {
+  0%, 100% {
+    background-position: 20% 80%, 80% 20%;
+  }
+  50% {
+    background-position: 80% 20%, 20% 80%;
   }
 }

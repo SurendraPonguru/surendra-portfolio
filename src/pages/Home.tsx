@@ -474,7 +474,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
 
           <Reveal>
             <div className="relative bg-gradient-to-r from-primary to-accent p-4 sm:p-6 md:p-12 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+              <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
               
               <div className="relative z-10 text-white">
                 <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
@@ -571,7 +571,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                 <SocialLinks />
                 
                 <div className="mt-6 sm:mt-8 md:mt-12 p-4 sm:p-5 md:p-6 relative bg-gradient-to-r from-primary to-accent rounded-2xl text-white overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                  <div className="absolute inset-0 opacity-30 pattern-grid pointer-events-none" />
                   <div className="relative z-10">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4">Looking for a developer?</h3>
                     <p className="text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4">
@@ -590,7 +590,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
       
       {/* Call to Action */}
       <section className="relative py-14 md:py-20 bg-gradient-to-r from-primary to-accent text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <Reveal>
             <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Let's Work Together</h2>

@@ -89,7 +89,7 @@ export default function AchievementsSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           {[
-            { label: "Projects Completed", value: "15+", color: "from-blue-500 to-blue-600" },
+            { label: "Projects Completed", value: "8+", color: "from-blue-500 to-blue-600" },
             { label: "Years Experience", value: "3+", color: "from-green-500 to-green-600" },
             { label: "Technologies", value: "8+", color: "from-purple-500 to-purple-600" },
             { label: "Client Rating", value: "5.0⭐", color: "from-yellow-500 to-yellow-600" },

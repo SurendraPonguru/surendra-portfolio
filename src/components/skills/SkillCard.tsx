@@ -25,7 +25,7 @@ export default function SkillCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#333_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-10 pattern-dots pointer-events-none" />
       
       <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
         <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg ${color} bg-opacity-20 flex items-center justify-center`}>

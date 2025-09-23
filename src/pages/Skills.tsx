@@ -67,7 +67,7 @@ export default function Skills() {
 
           <Reveal>
             <div className="relative bg-gradient-to-r from-primary to-accent p-4 sm:p-6 md:p-12 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+              <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
               
               <div className="relative z-10 text-white">
                 <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">

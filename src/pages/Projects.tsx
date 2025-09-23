@@ -75,10 +75,10 @@ export default function Projects() {
     : projects.filter(project => project.category === filter);
 
   const categories = [
-    { id: "all", label: "All" },
-    { id: "web", label: "Web" },
-    { id: "mobile", label: "Mobile" },
-    { id: "dashboard", label: "Dashboard" }
+    { id: "all", label: "All Projects" },
+    { id: "web", label: "Full-Stack" },
+    { id: "mobile", label: "Interactive" },
+    { id: "dashboard", label: "Analytics" }
   ];
 
   return (
@@ -88,11 +88,11 @@ export default function Projects() {
       <section className="min-h-screen py-20">
         <div className="container mx-auto px-4">
           <Reveal>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-center">My Projects</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-center">Things I've Made</h1>
           </Reveal>
           <Reveal>
             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-              A collection of my recent work spanning web applications, mobile apps, and interactive experiences.
+              A collection of digital solutions combining modern design with cutting-edge functionality.
             </p>
           </Reveal>
 
