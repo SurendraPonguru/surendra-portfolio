@@ -198,6 +198,24 @@ export default function Home() {
                   {ProfileDetails.about}
                 </p>
               </Reveal>
+              
+              <Reveal>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    Available for Remote Work
+                  </span>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-500 text-xs font-medium border border-blue-500/20">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    Open to Freelance
+                  </span>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-500 text-xs font-medium border border-purple-500/20">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    Full-time Ready
+                  </span>
+                </div>
+              </Reveal>
+              
               <Reveal>
                 <div className="flex flex-wrap gap-3 md:gap-4">
                   <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity sm:size-lg">
