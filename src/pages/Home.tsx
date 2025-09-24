@@ -218,7 +218,7 @@ export default function Home() {
               </Reveal>
             </div>
             
-            <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[500px] hidden md:block">
+            <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[400px] hidden md:block">
               <EnhancedProfileImage
                 src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
                 alt="Profile Image"
@@ -382,7 +382,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
             </p>
           </Reveal>
 
-          <Reveal>
+          {/* <Reveal>
             <div className="flex flex-wrap justify-center gap-2 mb-12">
               {categories.map(category => (
                 <button
@@ -398,10 +398,10 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                 </button>
               ))}
             </div>
-          </Reveal>
+          </Reveal> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <Reveal key={project.id}>
                 <ProjectCard
                   title={project.title}
