@@ -8,7 +8,7 @@ export const ProfileDetails = {
     email:"ponguru.720@gmail.com",
     phoneNumber:"+91 630 063 4953",
     address:"Hyderabad, India",
-    about:"I am a software engineer with 3 years of experience in web development. I am passionate about learning new technologies and improving my skills. I love to work on challenging projects and solve complex problems. I am a team player and enjoy collaborating with others to achieve common goals.",
+    about:"I create beautiful, functional web applications that users love. With 3+ years of experience, I turn ideas into reality using modern technologies. I'm passionate about clean code, smooth user experiences, and solving real-world problems through innovative solutions.",
 }
 
 export const socialMedia={
