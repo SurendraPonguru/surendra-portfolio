@@ -16,7 +16,6 @@ export default function ProjectCard({
   title,
   description,
   image,
-  tags,
   liveUrl,
   githubUrl,
 }: ProjectCardProps) {
@@ -24,11 +23,11 @@ export default function ProjectCard({
 
   return (
     <div
-      className="group relative overflow-hidden rounded-xl shadow-md transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl"
+      className="group relative overflow-hidden rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="aspect-video overflow-hidden bg-secondary">
+      <div className="aspect-video overflow-hidden">
         <img
           src={image}
           alt={title}
@@ -36,40 +35,33 @@ export default function ProjectCard({
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-      <div className="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-white/90 text-sm mb-4 line-clamp-2 group-hover:line-clamp-none">
+      {/* Action buttons - right side */}
+      <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+        {liveUrl && (
+          <Button asChild size="icon" variant="default" className="h-10 w-10 rounded-full shadow-lg backdrop-blur-sm">
+            <a href={liveUrl} target="_blank" rel="noreferrer" title="View Demo">
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
+        )}
+        {githubUrl && (
+          <Button asChild size="icon" variant="outline" className="h-10 w-10 rounded-full shadow-lg backdrop-blur-sm bg-background/80 border-border/50">
+            <a href={githubUrl} target="_blank" rel="noreferrer" title="View Code">
+              <Github className="h-4 w-4" />
+            </a>
+          </Button>
+        )}
+      </div>
+
+      {/* Content - bottom */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+        <p className="text-muted-foreground text-sm line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
           {description}
         </p>
-        
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag) => (
-            <span key={tag} className="text-xs py-1 px-2 rounded-full bg-primary/70 text-white">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex gap-3 transform opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-          {liveUrl && (
-            <Button asChild size="sm" variant="default">
-              <a href={liveUrl} target="_blank" rel="noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Live Demo
-              </a>
-            </Button>
-          )}
-          {githubUrl && (
-            <Button asChild size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-              <a href={githubUrl} target="_blank" rel="noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                Code
-              </a>
-            </Button>
-          )}
-        </div>
       </div>
     </div>
   );
