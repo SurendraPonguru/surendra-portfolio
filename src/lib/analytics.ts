@@ -3,8 +3,8 @@ import posthog from 'posthog-js';
 // Initialize PostHog
 export const initAnalytics = () => {
   if (typeof window !== 'undefined') {
-    posthog.init('phc_YOUR_PROJECT_KEY_HERE', {
-      api_host: 'https://app.posthog.com',
+    posthog.init('phc_wrdE1CmtduXvP7P941rbCFSyC8sZAg3pwak9LUJrcYK', {
+      api_host: 'https://us.i.posthog.com',
       // Enable session recordings and heatmaps
       capture_pageview: true,
       capture_pageleave: true,
