@@ -13,13 +13,35 @@ import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import AppLoader from "./components/ui/AppLoader";
+import { initAnalytics } from "./lib/analytics";
+import { usePageTracking } from "./hooks/useAnalytics";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  usePageTracking();
+  
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Initialize analytics
+    initAnalytics();
+    
     // Simulate app initialization time
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -38,16 +60,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/contact" element={<Contact />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppContent />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

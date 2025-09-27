@@ -17,10 +17,16 @@ import AchievementsSection from "@/components/achievements/AchievementsSection";
 import CustomizationPanel from "@/components/customization/CustomizationPanel";
 import { motion } from "framer-motion";
 import ResumeViewer from "@/components/contact/ResumeViewer";
+import { useInteractionTracking } from "@/hooks/useAnalytics";
+import { useScrollTracking } from "@/components/analytics/AnalyticsWrapper";
 
 export default function Home() {
   const [isCustomizationOpen, setIsCustomizationOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const { trackClick } = useInteractionTracking();
+  
+  // Enable scroll tracking
+  useScrollTracking();
   
   const { ref: homeRef, inView: homeInView } = useInView({ threshold: 0.3 });
   const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.3 });

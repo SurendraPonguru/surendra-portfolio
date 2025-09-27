@@ -1,8 +1,28 @@
 
-# Surendra Ponguru - Portfolio Website
+# Surendra Ponguru - Portfolio Website with PostHog Analytics
 
 ## 🌐 Overview
-A personal portfolio website for **Surendra Ponguru**, a Frontend Developer with expertise in **React** and modern web technologies. This website highlights Surendra's skills, projects, experience, and offers a way to get in touch.
+A personal portfolio website for **Surendra Ponguru**, a Frontend Developer with expertise in **React** and modern web technologies. This website highlights Surendra's skills, projects, experience, and offers a way to get in touch. Now includes **PostHog analytics** for tracking user behavior and engagement.
+
+## 📊 Analytics Setup
+
+To start tracking your users with PostHog:
+
+1. **Create a PostHog account** at [https://app.posthog.com](https://app.posthog.com)
+2. **Get your Project API Key** from your PostHog project settings
+3. **Update the analytics configuration** in `src/lib/analytics.ts`:
+   ```typescript
+   posthog.init('YOUR_ACTUAL_PROJECT_KEY_HERE', {
+   ```
+
+### What Gets Tracked:
+- **Page Views**: Every page visit and navigation
+- **Time on Page**: How long users spend on each section
+- **Scroll Behavior**: Scroll depth tracking (25%, 50%, 75%, 100%)
+- **Button Clicks**: All major interactions and buttons
+- **Session Recordings**: Visual replays of user sessions
+- **Project Interactions**: Which projects users view most
+- **Contact Conversions**: Resume downloads and social link clicks
 
 ---
 
