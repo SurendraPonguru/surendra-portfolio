@@ -1,5 +1,6 @@
 
-import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { socialMedia } from "@/assests/context";
 
@@ -48,13 +49,13 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
               <a 
-                href={socialMedia.twitter} 
+                href={socialMedia.x} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="social-icon hover:bg-primary/10"
-                aria-label="Twitter"
+                aria-label="X (Twitter)"
               >
-                <Twitter size={18} />
+                <FaXTwitter size={18} />
               </a>
               <a 
                 href={socialMedia.instagram} 

@@ -15,7 +15,7 @@ export const socialMedia={
     instagram:'https://www.instagram.com/surendra_ponguru07?igsh=amVhMm8zZGFxaGJu',
     github:'https://github.com/SurendraPonguru',
     linkedin:'https://www.linkedin.com/in/surendrafedev/',
-    twitter:'https://twitter.com/surendra_ponguru07',  
+    x:'https://x.com/PonguruSur55477?t=cPnXJ-2BAeD98o6-KlE3Tg&s=08',  
     Phone:'tel:+91 630 063 4953',
     email:'mailto: ponguru.720@gmail.com',
     address:"Hyderabad, India",

@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 import {
   Github,
   Linkedin,
-  Twitter,
   Instagram,
   Mail,
   Phone,
 } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface SocialLinkProps {
   href: string;
@@ -52,10 +52,10 @@ export default function SocialLinks() {
         color="bg-blue-600 hover:bg-blue-500"
       />
       <SocialLink
-        href={socialMedia.twitter}
-        icon={<Twitter size={20} />}
-        label="Twitter"
-        color="bg-sky-500 hover:bg-sky-400"
+        href={socialMedia.x}
+        icon={<FaXTwitter size={20} />}
+        label="X (Twitter)"
+        color="bg-black hover:bg-gray-900"
       />
       <SocialLink
         href={socialMedia.instagram}
