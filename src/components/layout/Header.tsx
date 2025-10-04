@@ -80,8 +80,13 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <NavLink to="/" className="text-2xl font-playfair font-bold gradient-text">
-            SURENDRA PONGURU
+          <NavLink to="/" className="flex items-center gap-3">
+            <img 
+              src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png" 
+              alt="Profile" 
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <span className="text-2xl font-playfair font-bold gradient-text">SP</span>
           </NavLink>
 
           {/* Desktop Navigation */}
