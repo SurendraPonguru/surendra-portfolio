@@ -64,7 +64,7 @@ export default function SocialLinks() {
         color="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400"
       />
       <SocialLink
-        href={`mailto:${socialMedia.email}`}
+        href={socialMedia.email}
         icon={<Mail size={20} />}
         label="Email"
         color="bg-emerald-600 hover:bg-emerald-500"
