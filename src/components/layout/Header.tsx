@@ -4,19 +4,37 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 export default function Header() {
   const { toggleTheme, theme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [displayText, setDisplayText] = useState("SP");
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+
+  useEffect(() => {
+    const fullText = "Surendra Ponguru";
+    const shortText = "SP";
+    
+    if (isLogoHovered) {
+      let currentIndex = 0;
+      const typingInterval = setInterval(() => {
+        if (currentIndex <= fullText.length) {
+          setDisplayText(fullText.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, 80);
+      
+      return () => clearInterval(typingInterval);
+    } else {
+      setDisplayText(shortText);
+    }
+  }, [isLogoHovered]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,27 +103,25 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <NavLink to="/" className="group flex items-center gap-2 hover-scale">
-                <div className="relative">
-                  <img 
-                    src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png" 
-                    alt="Profile" 
-                    className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/50 transition-all duration-300"
-                  />
-                  <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <span className="text-xl font-playfair font-bold gradient-text relative">
-                  SP
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
-                </span>
-              </NavLink>
-            </TooltipTrigger>
-            <TooltipContent className="animate-fade-in">
-              <p className="font-playfair font-semibold text-base">Surendra Ponguru</p>
-            </TooltipContent>
-          </Tooltip>
+          <NavLink 
+            to="/" 
+            className="group flex items-center gap-2 hover-scale"
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
+          >
+            <div className="relative">
+              <img 
+                src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png" 
+                alt="Profile" 
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/50 transition-all duration-300"
+              />
+              <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            <span className="text-xl font-playfair font-bold gradient-text relative min-w-[40px]">
+              {displayText}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
+            </span>
+          </NavLink>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center">
