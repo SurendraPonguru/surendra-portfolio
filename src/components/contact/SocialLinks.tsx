@@ -63,18 +63,28 @@ export default function SocialLinks() {
         label="Instagram"
         color="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400"
       />
-      <SocialLink
-        href={socialMedia.email}
-        icon={<Mail size={20} />}
-        label="Email"
-        color="bg-emerald-600 hover:bg-emerald-500"
-      />
-      <SocialLink
-        href={`tel:${socialMedia.Phone}`}
-        icon={<Phone size={20} />}
-        label="Phone"
-        color="bg-amber-600 hover:bg-amber-500"
-      />
+      <div
+        className={`group flex items-center gap-4 p-4 rounded-xl transition-all duration-300 hover:scale-105 bg-emerald-600 hover:bg-emerald-500 cursor-default`}
+      >
+        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white transition-all duration-300 group-hover:rotate-12">
+          <Mail size={20} />
+        </div>
+        <div>
+          <h3 className="text-white font-medium">Email</h3>
+          <p className="text-white/80 text-sm">ponguru.720@gmail.com</p>
+        </div>
+      </div>
+      <div
+        className={`group flex items-center gap-4 p-4 rounded-xl transition-all duration-300 hover:scale-105 bg-amber-600 hover:bg-amber-500 cursor-default`}
+      >
+        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white transition-all duration-300 group-hover:rotate-12">
+          <Phone size={20} />
+        </div>
+        <div>
+          <h3 className="text-white font-medium">Phone</h3>
+          <p className="text-white/80 text-sm">+91 630 063 4953</p>
+        </div>
+      </div>
     </div>
   );
 }
