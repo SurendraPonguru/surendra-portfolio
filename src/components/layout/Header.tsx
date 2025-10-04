@@ -80,13 +80,19 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <NavLink to="/" className="flex items-center gap-3">
-            <img 
-              src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png" 
-              alt="Profile" 
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <span className="text-2xl font-playfair font-bold gradient-text">SP</span>
+          <NavLink to="/" className="group flex items-center gap-2 hover-scale">
+            <div className="relative">
+              <img 
+                src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png" 
+                alt="Profile" 
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/50 transition-all duration-300"
+              />
+              <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            <span className="text-xl font-playfair font-bold gradient-text relative">
+              SP
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
+            </span>
           </NavLink>
 
           {/* Desktop Navigation */}
