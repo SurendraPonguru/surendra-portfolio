@@ -12,7 +12,7 @@ export const ProfileDetails = {
 }
 
 export const socialMedia={
-    instagram:'https://www.instagram.com/surendra_ponguru07?igsh=amVhMm8zZGFxaGJu',
+    instagram:'https://www.instagram.com/thisis_suri?igsh=amVhMm8zZGFxaGJu',
     github:'https://github.com/SurendraPonguru',
     linkedin:'https://www.linkedin.com/in/surendrafedev/',
     x:'https://x.com/PonguruSur55477?t=cPnXJ-2BAeD98o6-KlE3Tg&s=08',  
@@ -90,8 +90,8 @@ export const technicalSkills = [
     {
       name: "TypeScript",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-      level: 75,
-      color: "bg-blue-600",
+      level: 95,
+      color: "bg-yellow-600",
       description: "Type definitions, interfaces, generics"
     },
   ];
