@@ -132,14 +132,14 @@ export default function Home() {
     <>
       <ParticleBackground />
       
-      {/* Customization Panel */}
-      <CustomizationPanel 
+      {/* Customization Panel - Commented out */}
+      {/* <CustomizationPanel 
         isOpen={isCustomizationOpen} 
         onClose={() => setIsCustomizationOpen(false)} 
-      />
+      /> */}
 
-      {/* Floating customization button */}
-      <motion.div
+      {/* Floating customization button - Commented out */}
+      {/* <motion.div
         className="fixed top-20 right-6 z-40"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -152,7 +152,7 @@ export default function Home() {
         >
           <Settings className="w-5 h-5" />
         </Button>
-      </motion.div>
+      </motion.div> */}
       
       {/* Home Section */}
       <section id="home" ref={homeRef} className="relative min-h-[320px] sm:min-h-[450px] md:min-h-[85vh] flex items-center py-8 sm:py-10 md:py-12">
