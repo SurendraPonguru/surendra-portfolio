@@ -55,16 +55,16 @@ export default function Home() {
       liveUrl: "https://surtel-mobilestore.vercel.app/",
       githubUrl: "https://github.com/SurendraPonguru/surtel-mobilestore"
     },
-    {
-      id: 2,
-      title: "Portfolio Template",
-      description: "A customizable portfolio template for developers and designers to showcase their work.",
-      image: "/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png",
-      tags: ["React", "Tailwind CSS", "TypeScript"],
-      category: "web",
-      liveUrl: "https://surendra-portfolio-three.vercel.app/",
-      githubUrl: "https://github.com/SurendraPonguru/surendra-portfolio"
-    },
+    // {
+    //   id: 2,
+    //   title: "Portfolio Template",
+    //   description: "A customizable portfolio template for developers and designers to showcase their work.",
+    //   image: "/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png",
+    //   tags: ["React", "Tailwind CSS", "TypeScript"],
+    //   category: "web",
+    //   liveUrl: "https://surendra-portfolio-three.vercel.app/",
+    //   githubUrl: "https://github.com/SurendraPonguru/surendra-portfolio"
+    // },
     {
       id: 3,
       title: "AI Virtual Assistant [ Aiva Chat]",
@@ -139,7 +139,7 @@ export default function Home() {
       />
 
       {/* Floating customization button */}
-      <motion.div
+      {/* <motion.div
         className="fixed top-20 right-6 z-40"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -152,7 +152,7 @@ export default function Home() {
         >
           <Settings className="w-5 h-5" />
         </Button>
-      </motion.div>
+      </motion.div> */}
       
       {/* Home Section */}
       <section id="home" ref={homeRef} className="relative min-h-[320px] sm:min-h-[450px] md:min-h-[85vh] flex items-center py-8 sm:py-10 md:py-12">
