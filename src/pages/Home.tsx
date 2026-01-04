@@ -132,13 +132,13 @@ export default function Home() {
     <>
       <ParticleBackground />
       
-      {/* Customization Panel */}
-      <CustomizationPanel 
+      {/* Customization Panel - Commented out */}
+      {/* <CustomizationPanel 
         isOpen={isCustomizationOpen} 
         onClose={() => setIsCustomizationOpen(false)} 
-      />
+      /> */}
 
-      {/* Floating customization button */}
+      {/* Floating customization button - Commented out */}
       {/* <motion.div
         className="fixed top-20 right-6 z-40"
         initial={{ opacity: 0, scale: 0.8 }}

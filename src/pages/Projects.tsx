@@ -38,36 +38,6 @@ export default function Projects() {
       liveUrl: "https://aiva-chat-surendrapongurus-projects.vercel.app/",
       githubUrl: "https://github.com/SurendraPonguru/AivaChat"
     },
-    {
-      id: 4,
-      title: "Weather Dashboard",
-      description: "A weather app that displays current conditions and forecasts for any location.",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=800",
-      tags: ["JavaScript", "API Integration", "CSS3"],
-      category: "web",
-      // liveUrl: "https://example.com",
-      // githubUrl: "https://github.com/username/project"
-    },
-    {
-      id: 5,
-      title: "Social Media Dashboard",
-      description: "A dashboard that aggregates analytics from multiple social media platforms.",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800",
-      tags: ["React", "Chart.js", "Social APIs"],
-      category: "dashboard",
-      // liveUrl: "https://example.com",
-      // githubUrl: "https://github.com/username/project"
-    },
-    {
-      id: 6,
-      title: "Fitness Tracker",
-      description: "A mobile app for tracking workouts, nutrition, and fitness progress.",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800",
-      tags: ["React Native", "Firebase", "HealthKit"],
-      category: "mobile",
-      // liveUrl: "https://example.com",
-      // githubUrl: "https://github.com/username/project"
-    }
   ];
 
   const filteredProjects = filter === "all" 
@@ -97,18 +67,28 @@ export default function Projects() {
           </Reveal>
 
           <Reveal>
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <div className="flex flex-wrap justify-center gap-3 mb-16">
               {categories.map(category => (
                 <button
                   key={category.id}
                   onClick={() => setFilter(category.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    filter === category.id 
-                      ? "bg-primary text-white" 
-                      : "bg-secondary hover:bg-secondary/80"
+                  className={`relative px-8 py-4 rounded-2xl transition-all duration-500 overflow-hidden group ${
+                    filter === category.id
+                      ? "bg-gradient-to-br from-primary to-accent text-white shadow-2xl shadow-primary/50 scale-110 border-2 border-primary/30"
+                      : "bg-card text-foreground border-2 border-border hover:border-primary/50 hover:shadow-xl"
                   }`}
+                  style={{
+                    boxShadow: filter === category.id 
+                      ? 'var(--shadow-primary), 0 0 30px hsl(var(--primary) / 0.3)' 
+                      : 'var(--shadow-md)'
+                  }}
                 >
-                  {category.label}
+                  <div className="absolute inset-0 opacity-20 pattern-dots pointer-events-none" />
+                  <span className="relative z-10 font-semibold">{category.label}</span>
+                  {filter === category.id && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" 
+                         style={{ animation: 'shimmer 2s infinite' }} />
+                  )}
                 </button>
               ))}
             </div>
@@ -120,10 +100,10 @@ export default function Projects() {
                 <ProjectCard
                   title={project.title}
                   description={project.description}
-                  image={project?.image}
+                  image={project.image}
                   tags={project.tags}
-                  liveUrl={project?.liveUrl?? ""}
-                  githubUrl={project.githubUrl ?? ""}
+                  liveUrl={project.liveUrl}
+                  githubUrl={project.githubUrl}
                 />
               </Reveal>
             ))}
