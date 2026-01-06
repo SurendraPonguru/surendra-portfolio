@@ -15,12 +15,13 @@ import NotFound from "./pages/NotFound";
 import AppLoader from "./components/ui/AppLoader";
 import { initAnalytics } from "./lib/analytics";
 import { usePageTracking } from "./hooks/useAnalytics";
+import { CursorAnimation } from "./components/CursorAnimation";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   usePageTracking();
-  
+
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -41,7 +42,7 @@ const App = () => {
   useEffect(() => {
     // Initialize analytics
     initAnalytics();
-    
+
     // Simulate app initialization time
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -59,6 +60,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <CursorAnimation />
         <BrowserRouter>
           <AppContent />
         </BrowserRouter>
