@@ -42,9 +42,10 @@ export default function Projects() {
       id: 4,
       title: "To-Do App",
       description: "A simple and intuitive task management application to organize your daily tasks.",
-      image: "/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png",
+      image: "/images/todo-app.png",
       tags: ["React", "TypeScript", "Tailwind CSS"],
       category: "web",
+      liveUrl: "http://surendraponguru.github.io/To-do/",
       githubUrl: "https://github.com/SurendraPonguru/To-do"
     },
   ];
