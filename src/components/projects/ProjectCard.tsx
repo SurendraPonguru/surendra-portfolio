@@ -19,20 +19,28 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-xl bg-white border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <div
+      className="group relative overflow-hidden rounded-xl bg-card border border-border transition-transform duration-200 hover:-translate-y-1"
+      style={{ boxShadow: "var(--shadow-md)" }}
+    >
       <div className="aspect-video overflow-hidden">
         <img
           src={image}
           alt={title}
+          loading="lazy"
+          decoding="async"
+          onError={(e) => {
+            e.currentTarget.src = "/placeholder.svg";
+          }}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
 
-      {/* Overlay on hover */}
-      <div className="absolute inset-0 bg-background/80 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* Subtle hover overlay (doesn't block the image) */}
+      <div className="pointer-events-none absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Action buttons */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2 group-hover:opacity-100 transition-opacity duration-300 z-10">
+      <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
         {liveUrl && (
           <Button
             asChild
@@ -72,7 +80,7 @@ export default function ProjectCard({
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-background/95 via-background/50 to-transparent">
         <h3 className="text-lg font-semibold text-foreground mb-1">{title}</h3>
         <p className="text-muted-foreground text-sm line-clamp-2">{description}</p>
       </div>
