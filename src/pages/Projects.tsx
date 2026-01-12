@@ -38,6 +38,15 @@ export default function Projects() {
       liveUrl: "https://aiva-chat-surendrapongurus-projects.vercel.app/",
       githubUrl: "https://github.com/SurendraPonguru/AivaChat"
     },
+    {
+      id: 4,
+      title: "To-Do App",
+      description: "A simple and intuitive task management application to organize your daily tasks.",
+      image: "/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png",
+      tags: ["React", "TypeScript", "Tailwind CSS"],
+      category: "web",
+      githubUrl: "https://github.com/SurendraPonguru/To-do"
+    },
   ];
 
   const filteredProjects = filter === "all" 
