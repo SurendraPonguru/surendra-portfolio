@@ -19,7 +19,7 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <div className="group relative overflow-hidden rounded-xl bg-white border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="aspect-video overflow-hidden">
         <img
           src={image}
@@ -29,21 +29,21 @@ export default function ProjectCard({
       </div>
 
       {/* Overlay on hover */}
-      <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-background/80 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Action buttons */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+      <div className="absolute top-4 right-4 flex flex-col gap-2 group-hover:opacity-100 transition-opacity duration-300 z-10">
         {liveUrl && (
-          <Button 
-            asChild 
-            size="icon" 
-            variant="default" 
+          <Button
+            asChild
+            size="icon"
+            variant="default"
             className="h-10 w-10 rounded-full"
           >
-            <a 
-              href={liveUrl} 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noreferrer"
               title="View Demo"
               onClick={(e) => e.stopPropagation()}
             >
@@ -52,16 +52,16 @@ export default function ProjectCard({
           </Button>
         )}
         {githubUrl && (
-          <Button 
-            asChild 
-            size="icon" 
-            variant="outline" 
+          <Button
+            asChild
+            size="icon"
+            variant="outline"
             className="h-10 w-10 rounded-full bg-background/90"
           >
-            <a 
-              href={githubUrl} 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
               title="View Code"
               onClick={(e) => e.stopPropagation()}
             >
@@ -72,7 +72,7 @@ export default function ProjectCard({
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute bottom-0 left-0 right-0 p-5 group-hover:opacity-100 transition-opacity duration-300">
         <h3 className="text-lg font-semibold text-foreground mb-1">{title}</h3>
         <p className="text-muted-foreground text-sm line-clamp-2">{description}</p>
       </div>

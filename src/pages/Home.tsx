@@ -24,10 +24,10 @@ export default function Home() {
   const [isCustomizationOpen, setIsCustomizationOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { trackClick } = useInteractionTracking();
-  
+
   // Enable scroll tracking
   useScrollTracking();
-  
+
   const { ref: homeRef, inView: homeInView } = useInView({ threshold: 0.3 });
   const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.3 });
   const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.3 });
@@ -43,14 +43,14 @@ export default function Home() {
   }, [homeInView, aboutInView, projectsInView, skillsInView, contactInView]);
 
   const [filter, setFilter] = useState("all");
-  
+
   const projects = [
     {
       id: 1,
       title: "E-Commerce Website",
       description: "Experience products in a new dimension. Interact, explore, and shop in our reimagined digital space.",
       image: "/images/Surtel.png",
-      tags: ['React' ,'Tailwind CSS','shadcn-ui','TypeScript'],
+      tags: ['React', 'Tailwind CSS', 'shadcn-ui', 'TypeScript'],
       category: "web",
       liveUrl: "https://surtel-mobilestore.vercel.app/",
       githubUrl: "https://github.com/SurendraPonguru/surtel-mobilestore"
@@ -70,18 +70,30 @@ export default function Home() {
       title: "AI Virtual Assistant [ Aiva Chat]",
       description: "AivaChat is a modern, responsive chatbot application .",
       image: "/images/Aivalogo.svg",
-      tags: ["React", "TypeScript", "Tailwind CSS","Gemini API"],
+      tags: ["React", "TypeScript", "Tailwind CSS", "Gemini API"],
       category: "web",
       liveUrl: "https://aiva-chat-surendrapongurus-projects.vercel.app/",
       githubUrl: "https://github.com/SurendraPonguru/AivaChat"
     },
+    // {
+    //   id: 3,
+    //   title: "AI Virtual Assistant [ Aiva Chat]",
+    //   description: "AivaChat is a modern, responsive chatbot application .",
+    //   image: "/images/Aivalogo.svg",
+    //   tags: ["React", "TypeScript", "Tailwind CSS","Gemini API"],
+    //   category: "web",
+    //   liveUrl: "https://aiva-chat-surendrapongurus-projects.vercel.app/",
+    //   githubUrl: "https://github.com/SurendraPonguru/AivaChat"
+    // },
     {
       id: 4,
-      title: "Weather Dashboard",
-      description: "A weather app that displays current conditions and forecasts for any location.",
+      title: "To-do App",
+      description: "A simple and intuitive To-do list app built with HTML, CSS, and JavaScript to help users manage tasks efficiently.",
       image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=800",
-      tags: ["JavaScript", "API Integration", "CSS3"],
+      tags: ["HTML", "CSS", "JavaScript"],
       category: "web",
+      liveUrl: "http://surendraponguru.github.io/To-do/",
+      githubUrl: "https://github.com/SurendraPonguru/To-do"
     },
     {
       id: 5,
@@ -101,8 +113,8 @@ export default function Home() {
     }
   ];
 
-  const filteredProjects = filter === "all" 
-    ? projects 
+  const filteredProjects = filter === "all"
+    ? projects
     : projects.filter(project => project.category === filter);
 
   const categories = [
@@ -131,7 +143,7 @@ export default function Home() {
   return (
     <>
       <ParticleBackground />
-      
+
       {/* Customization Panel - Commented out */}
       {/* <CustomizationPanel 
         isOpen={isCustomizationOpen} 
@@ -153,7 +165,7 @@ export default function Home() {
           <Settings className="w-5 h-5" />
         </Button>
       </motion.div> */}
-      
+
       {/* Home Section */}
       <section id="home" ref={homeRef} className="relative min-h-[320px] sm:min-h-[450px] md:min-h-[85vh] flex items-center py-8 sm:py-10 md:py-12">
         <div className="container mx-auto px-4">
@@ -166,7 +178,7 @@ export default function Home() {
               </Reveal>
               <motion.div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
-                  Hi, I'm 
+                  Hi, I'm
                   <br />
                   <span className="gradient-text inline-block">
                     {nameText.split('').map((letter, i) => (
@@ -204,7 +216,7 @@ export default function Home() {
                   {ProfileDetails.about}
                 </p>
               </Reveal>
-              
+
               <Reveal>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
@@ -221,7 +233,7 @@ export default function Home() {
                   </span>
                 </div>
               </Reveal>
-              
+
               <Reveal>
                 <div className="flex flex-wrap gap-3 md:gap-4">
                   <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity sm:size-lg">
@@ -241,7 +253,7 @@ export default function Home() {
                 </div>
               </Reveal>
             </div>
-            
+
             <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[400px] hidden md:block">
               <EnhancedProfileImage
                 src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
@@ -252,7 +264,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* Services Section */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
@@ -264,7 +276,7 @@ export default function Home() {
               </p>
             </div>
           </Reveal>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
@@ -325,8 +337,8 @@ export default function Home() {
               </Reveal>
               <Reveal>
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-5 md:mb-8">
-                In addition to my development skills, I have a keen eye for design and proficiency in UX design using Figma. This combination allows me to bridge the gap between design and development, ensuring that the user experience is both seamless and visually appealing.
-I am currently working at {workExperience[0].companyName}, where I've been involved in developing scalable front-end solutions for various clients. My work involves collaborating closely with cross-functional teams to deliver high-quality products that meet client requirements and exceed user expectations.     </p>
+                  In addition to my development skills, I have a keen eye for design and proficiency in UX design using Figma. This combination allows me to bridge the gap between design and development, ensuring that the user experience is both seamless and visually appealing.
+                  I am currently working at {workExperience[0].companyName}, where I've been involved in developing scalable front-end solutions for various clients. My work involves collaborating closely with cross-functional teams to deliver high-quality products that meet client requirements and exceed user expectations.     </p>
               </Reveal>
               <Reveal className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
                 <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity sm:size-lg">
@@ -334,7 +346,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                   <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
                 <ResumeViewer resumeUrl={"/FIle/Surendra Ponguru - Application Developer.pdf"} resumeTitle={"Surendra Ponguru - Frontend Developer"} />
-                
+
                 {/* <Button 
                     variant="outline"
                     size="sm"
@@ -432,7 +444,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                   description={project.description}
                   image={project?.image}
                   tags={project.tags}
-                  liveUrl={project?.liveUrl?? ""}
+                  liveUrl={project?.liveUrl ?? ""}
                   githubUrl={project.githubUrl ?? ""}
                 />
               </Reveal>
@@ -451,7 +463,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
             <FloatingElement delay={0.5} className="absolute inset-0 translate-y-16 m-auto w-40 sm:w-48 md:w-64 h-40 sm:h-48 md:h-64 rounded-full bg-accent/10 filter blur-3xl opacity-70">
               <div />
             </FloatingElement>
-            
+
             <Reveal>
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-center relative z-10">My Skills</h1>
             </Reveal>
@@ -499,7 +511,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
           <Reveal>
             <div className="relative bg-gradient-to-r from-primary to-accent p-4 sm:p-6 md:p-12 rounded-2xl overflow-hidden">
               <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
-              
+
               <div className="relative z-10 text-white">
                 <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
                   Always Learning, Always Growing
@@ -530,7 +542,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
             <FloatingElement delay={0.5} className="absolute inset-0 translate-y-16 m-auto w-40 sm:w-48 md:w-64 h-40 sm:h-48 md:h-64 rounded-full bg-accent/10 filter blur-3xl opacity-70">
               <div />
             </FloatingElement>
-            
+
             <Reveal>
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-center relative z-10">Get In Touch</h1>
             </Reveal>
@@ -575,9 +587,9 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
                   </div>
                 </div>
                 <div className="relative h-36 sm:h-40 md:h-48 rounded-xl overflow-hidden">
-                  <img 
-                    src="/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png" 
-                    alt="Hyderabad Cityscape" 
+                  <img
+                    src="/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png"
+                    alt="Hyderabad Cityscape"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -593,7 +605,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
               <div>
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Connect With Me</h2>
                 <SocialLinks />
-                
+
                 <div className="mt-6 sm:mt-8 md:mt-12 p-4 sm:p-5 md:p-6 relative bg-gradient-to-r from-primary to-accent rounded-2xl text-white overflow-hidden">
                   <div className="absolute inset-0 opacity-30 pattern-grid pointer-events-none" />
                   <div className="relative z-10">
@@ -611,7 +623,7 @@ I am currently working at {workExperience[0].companyName}, where I've been invol
           </div>
         </div>
       </section>
-      
+
       {/* Call to Action */}
       <section className="relative py-14 md:py-20 bg-gradient-to-r from-primary to-accent text-white overflow-hidden">
         <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
