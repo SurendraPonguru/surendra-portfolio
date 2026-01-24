@@ -30,7 +30,7 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           opacity: 0.2,
         }}
       />
-      
+
       {/* Pulsing ring */}
       <motion.div
         className="absolute inset-0 rounded-full border-2"
@@ -47,7 +47,7 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           borderColor: "hsl(var(--primary))",
         }}
       />
-      
+
       {/* Floating particles */}
       {[...Array(6)].map((_, i) => (
         <motion.div
@@ -72,7 +72,7 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           }}
         />
       ))}
-      
+
       {/* Main image container */}
       <motion.div
         className="relative z-10 w-full h-full rounded-full overflow-hidden"
@@ -94,8 +94,12 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/placeholder.svg";
+          }}
         />
-        
+
         {/* Overlay gradient for better integration */}
         <motion.div
           className="absolute inset-0 rounded-full"
@@ -112,7 +116,7 @@ export default function EnhancedProfileImage({ src, alt, className = "" }: Enhan
           }}
         />
       </motion.div>
-      
+
       {/* Glow effect */}
       <motion.div
         className="absolute inset-0 rounded-full pointer-events-none"

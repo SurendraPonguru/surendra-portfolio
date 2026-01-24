@@ -18,7 +18,7 @@ export default function Header() {
   useEffect(() => {
     const fullText = "Surendra Ponguru";
     const shortText = "SP";
-    
+
     if (isLogoHovered) {
       let currentIndex = 0;
       const typingInterval = setInterval(() => {
@@ -29,7 +29,7 @@ export default function Header() {
           clearInterval(typingInterval);
         }
       }, 80);
-      
+
       return () => clearInterval(typingInterval);
     } else {
       setDisplayText(shortText);
@@ -39,13 +39,13 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
-      
+
       // Only track sections on home page
       if (!isHomePage) return;
-      
+
       const sections = ["home", "about", "projects", "skills", "contact"];
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -79,40 +79,39 @@ export default function Header() {
     }
   };
 
-  const navLinks = isHomePage 
+  const navLinks = isHomePage
     ? [
-        { id: "home", label: "Home" },
-        { id: "about", label: "About" },
-        { id: "projects", label: "Projects" },
-        { id: "skills", label: "Skills" },
-        { id: "contact", label: "Contact" },
-      ]
+      { id: "home", label: "Home" },
+      { id: "about", label: "About" },
+      { id: "projects", label: "Projects" },
+      { id: "skills", label: "Skills" },
+      { id: "contact", label: "Contact" },
+    ]
     : [
-        { path: "/", label: "Home" },
-        { path: "/about", label: "About" },
-        { path: "/projects", label: "Projects" },
-        { path: "/skills", label: "Skills" },
-        { path: "/contact", label: "Contact" },
-      ];
+      { path: "/", label: "Home" },
+      { path: "/about", label: "About" },
+      { path: "/projects", label: "Projects" },
+      { path: "/skills", label: "Skills" },
+      { path: "/contact", label: "Contact" },
+    ];
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "py-4 bg-background/80 backdrop-blur-lg shadow-sm" : "py-6"
-      }`}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-background/80 backdrop-blur-lg shadow-sm" : "py-6"
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <NavLink 
-            to="/" 
+          <NavLink
+            to="/"
             className="group flex items-center gap-2 hover-scale"
             onMouseEnter={() => setIsLogoHovered(true)}
             onMouseLeave={() => setIsLogoHovered(false)}
           >
             <div className="relative">
-              <img 
-                src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png" 
-                alt="Profile" 
+              <img
+                src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png"
+                alt="Profile"
                 className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/50 transition-all duration-300"
               />
               <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -138,7 +137,7 @@ export default function Header() {
                 <NavLink
                   key={link.path}
                   to={link.path}
-                  className={({ isActive }) => 
+                  className={({ isActive }) =>
                     `nav-link ${isActive ? "active" : ""}`
                   }
                 >
@@ -146,9 +145,9 @@ export default function Header() {
                 </NavLink>
               )
             ))}
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={toggleTheme}
               className="ml-2 rounded-full hover:bg-primary/10"
             >
@@ -159,18 +158,18 @@ export default function Header() {
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center md:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={toggleTheme}
               className="mr-2 rounded-full hover:bg-primary/10"
             >
               {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={toggleMobileMenu}
               className="rounded-full hover:bg-primary/10"
             >
@@ -182,13 +181,13 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <div 
-        className={`fixed inset-0 bg-background z-40 md:hidden transition-transform duration-300 ease-in-out ${
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         style={{ top: "var(--header-height, 70px)" }}
       >
-        <nav className="flex flex-col py-8 px-8 space-y-6">
+        {/* <div className="absolute inset-0" /> */}
+        <nav className="relative flex flex-col py-8 px-8 space-y-6 z-10 w-full bg-gradient-to-b from-white/95 to-slate-50/95 dark:from-zinc-950/95 dark:to-zinc-900/95 backdrop-blur-xl border-r border-border/50 shadow-2xl">
           {navLinks.map((link) => (
             isHomePage ? (
               <button
@@ -205,7 +204,7 @@ export default function Header() {
               <NavLink
                 key={link.path}
                 to={link.path}
-                className={({ isActive }) => 
+                className={({ isActive }) =>
                   `text-xl nav-link ${isActive ? "active" : ""}`
                 }
               >
