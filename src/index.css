@@ -40,7 +40,7 @@
     --gradient-primary: linear-gradient(135deg, hsl(200 100% 50%), hsl(280 100% 60%));
     --gradient-accent: linear-gradient(135deg, hsl(280 100% 60%), hsl(200 100% 50%));
     --gradient-subtle: linear-gradient(135deg, hsl(210 20% 95%), hsl(0 0% 100%));
-    
+
     /* Enhanced shadow system */
     --shadow-sm: 0 2px 8px -2px hsl(200 100% 50% / 0.08);
     --shadow-md: 0 4px 16px -4px hsl(200 100% 50% / 0.12), 0 2px 8px -2px hsl(200 100% 50% / 0.08);
@@ -94,7 +94,7 @@
     --gradient-primary: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 100% 70%));
     --gradient-accent: linear-gradient(135deg, hsl(280 100% 70%), hsl(200 100% 60%));
     --gradient-subtle: linear-gradient(135deg, hsl(210 30% 8%), hsl(210 20% 4%));
-    
+
     /* Enhanced dark mode shadows */
     --shadow-sm: 0 2px 8px -2px hsl(200 100% 60% / 0.12);
     --shadow-md: 0 4px 16px -4px hsl(200 100% 60% / 0.18), 0 2px 8px -2px hsl(200 100% 60% / 0.12);
@@ -123,11 +123,79 @@
   }
 
   body {
-    @apply bg-background text-foreground font-poppins antialiased;
+    @apply bg-background text-foreground font-poppins antialiased overflow-x-hidden;
+    background: radial-gradient(circle at 50% 50%, hsl(0 0% 97%), hsl(0 0% 100%));
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  .dark body {
+    background: radial-gradient(circle at 50% 0%, hsl(var(--background)), hsl(220 20% 10%));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-playfair;
+  }
+}
+
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes shine-pulse {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
   }
 }
 
@@ -136,16 +204,16 @@
     @apply bg-background/40 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl;
     box-shadow: var(--shadow-lg);
   }
-  
+
   .gradient-text {
     @apply bg-gradient-primary bg-clip-text text-transparent;
   }
-  
+
   .card-hover {
     @apply transition-all duration-300;
     box-shadow: var(--shadow-md);
   }
-  
+
   .card-hover:hover {
     box-shadow: var(--shadow-xl);
     @apply -translate-y-2;
@@ -197,7 +265,7 @@
 }
 
 .pattern-grid {
-  background-image: 
+  background-image:
     linear-gradient(hsl(var(--primary) / 0.15) 1px, transparent 1px),
     linear-gradient(90deg, hsl(var(--accent) / 0.15) 1px, transparent 1px);
   background-size: 30px 30px;
@@ -205,7 +273,7 @@
 }
 
 .pattern-waves {
-  background-image: 
+  background-image:
     radial-gradient(circle at 25% 75%, hsl(var(--primary) / 0.2) 0%, transparent 60%),
     radial-gradient(circle at 75% 25%, hsl(var(--accent) / 0.2) 0%, transparent 60%),
     radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1) 0%, transparent 80%);
@@ -213,7 +281,7 @@
 }
 
 .pattern-neural {
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.3) 2px, transparent 2px),
     radial-gradient(circle at 80% 80%, hsl(var(--accent) / 0.3) 1.5px, transparent 1.5px),
     radial-gradient(circle at 40% 60%, hsl(var(--primary) / 0.2) 1px, transparent 1px);
@@ -231,23 +299,30 @@
 }
 
 @keyframes gradient {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
 }
 
 @keyframes pattern-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
     background-position: 0% 0%;
   }
+
   33% {
     transform: translateY(-10px) rotate(1deg);
     background-position: 30% 30%;
   }
+
   66% {
     transform: translateY(5px) rotate(-1deg);
     background-position: 70% 70%;
@@ -258,36 +333,46 @@
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 25px 25px;
   }
 }
 
 @keyframes pattern-wave {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 25% 75%, 75% 25%, 50% 50%;
   }
+
   33% {
     background-position: 75% 25%, 25% 75%, 80% 20%;
   }
+
   66% {
     background-position: 50% 50%, 80% 80%, 20% 80%;
   }
 }
 
 @keyframes pattern-neural {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 0%, 0% 0%, 0% 0%;
     transform: scale(1) rotate(0deg);
   }
+
   25% {
     background-position: 25% 25%, 75% 25%, 50% 75%;
     transform: scale(1.05) rotate(90deg);
   }
+
   50% {
     background-position: 50% 50%, 50% 50%, 75% 25%;
     transform: scale(1) rotate(180deg);
   }
+
   75% {
     background-position: 75% 75%, 25% 75%, 25% 50%;
     transform: scale(1.05) rotate(270deg);
@@ -298,6 +383,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }

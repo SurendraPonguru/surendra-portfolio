@@ -21,7 +21,7 @@ export const socialMedia={
     address:"Hyderabad, India",
 }
 export const locationSrc = {
-    hyderabadSrc :"../assests/images/hyd.jpg"
+    hyderabadSrc :"/images/hyd.jpg"
 }
 
 export const workExperience= [

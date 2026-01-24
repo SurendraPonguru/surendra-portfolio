@@ -298,9 +298,9 @@ export default function Home() {
                 delay: 0.3,
               },
             ].map((service, index) => (
-              <Reveal key={index}>
-                <div className="bg-card p-5 md:p-6 rounded-xl relative overflow-hidden card-hover border border-border/50">
-                  <div className="absolute top-0 right-0 opacity-5 text-7xl md:text-9xl font-bold -mt-4 -mr-4">{service.icon}</div>
+              <Reveal key={index} delay={index}>
+                <div className="bg-card p-5 md:p-6 rounded-xl relative overflow-hidden card-hover border border-border/50 group">
+                  <div className="absolute top-0 right-0 opacity-5 text-7xl md:text-9xl font-bold -mt-4 -mr-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">{service.icon}</div>
                   <div className="text-2xl md:text-3xl mb-3 md:mb-4">{service.icon}</div>
                   <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">{service.title}</h3>
                   <p className="text-muted-foreground text-sm md:text-base">{service.description}</p>
@@ -366,15 +366,16 @@ export default function Home() {
             </Reveal>
             <div className="space-y-4 sm:space-y-6 md:space-y-8">
               {workExperience.map((exp, index) => (
-                <Reveal key={index}>
-                  <div className="bg-card rounded-xl p-4 sm:p-5 md:p-6 border border-border/50">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 sm:mb-3 md:mb-4">
-                      <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 md:mb-0">{exp.role} @ {exp.companyName}</h3>
-                      <span className="text-xs sm:text-sm text-primary font-medium px-2 sm:px-3 py-1 rounded-full bg-primary/10 w-fit">
+                <Reveal key={index} delay={index}>
+                  <div className="bg-card rounded-xl p-4 sm:p-5 md:p-6 border border-border/50 relative overflow-hidden group hover:border-primary/30 transition-colors">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 sm:mb-3 md:mb-4 relative z-10">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 md:mb-0 group-hover:text-primary transition-colors">{exp.role} @ {exp.companyName}</h3>
+                      <span className="text-xs sm:text-sm text-primary font-bold px-2 sm:px-3 py-1 rounded-full bg-primary/10 w-fit border border-primary/20">
                         {exp.duration}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{exp.description}</p>
+                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground relative z-10">{exp.description}</p>
                   </div>
                 </Reveal>
               ))}
@@ -387,17 +388,20 @@ export default function Home() {
             </Reveal>
             <div className="space-y-4 sm:space-y-6 md:space-y-8">
               {education.map((edu, index) => (
-                <Reveal key={index}>
-                  <div className="bg-card rounded-xl p-4 sm:p-5 md:p-6 border border-border/50">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 sm:mb-3 md:mb-4">
-                      <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 md:mb-0">{edu.degree}</h3>
-                      <span className="text-xs sm:text-sm text-primary font-medium px-2 sm:px-3 py-1 rounded-full bg-primary/10 w-fit">
+                <Reveal key={index} delay={index}>
+                  <div className="bg-card rounded-xl p-4 sm:p-5 md:p-6 border border-border/50 hover:border-accent/30 transition-colors relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 sm:mb-3 md:mb-4 relative z-10">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 md:mb-0 group-hover:text-accent transition-colors">{edu.degree}</h3>
+                      <span className="text-xs sm:text-sm text-accent font-bold px-2 sm:px-3 py-1 rounded-full bg-accent/10 w-fit border border-accent/20">
                         {edu.duration}
                       </span>
                     </div>
-                    <p className="text-sm sm:text-base md:text-lg">{edu.collegeName}</p>
-                    <p className="text-sm sm:text-base md:text-lg mb-2">{edu.location}</p>
-                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{edu.description}</p>
+                    <div className="relative z-10">
+                      <p className="text-sm sm:text-base md:text-lg font-medium">{edu.collegeName}</p>
+                      <p className="text-sm sm:text-base md:text-lg mb-2 text-muted-foreground">{edu.location}</p>
+                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{edu.description}</p>
+                    </div>
                   </div>
                 </Reveal>
               ))}
@@ -438,7 +442,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Reveal key={project.id}>
+              <Reveal key={project.id} delay={index}>
                 <ProjectCard
                   title={project.title}
                   description={project.description}
@@ -479,7 +483,7 @@ export default function Home() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 md:mb-16">
             {technicalSkills.map((skill, index) => (
-              <Reveal key={skill.name}>
+              <Reveal key={skill.name} delay={index}>
                 <SkillCard
                   name={skill.name}
                   icon={skill.icon}
@@ -496,7 +500,7 @@ export default function Home() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 md:mb-16">
             {otherSkills.map((skill, index) => (
-              <Reveal key={skill.name}>
+              <Reveal key={skill.name} delay={index}>
                 <SkillCard
                   name={skill.name}
                   icon={skill.icon}
@@ -509,21 +513,39 @@ export default function Home() {
           </div>
 
           <Reveal>
-            <div className="relative bg-gradient-to-r from-primary to-accent p-4 sm:p-6 md:p-12 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
+            <div className="relative overflow-hidden rounded-2xl bg-card border border-primary/20 p-4 sm:p-6 md:p-12 group hover:border-primary/50 transition-colors duration-500">
+              {/* Gaming Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-32 -mt-32 animate-pulse" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -ml-32 -mb-32 animate-pulse animation-delay-2000" />
 
-              <div className="relative z-10 text-white">
-                <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
+              {/* Animated Grid */}
+              <div className="absolute inset-0 opacity-10 pattern-grid pointer-events-none group-hover:opacity-20 transition-opacity duration-500" />
+
+              {/* Top Border Line */}
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative z-10">
+                <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-accent animate-gradient bg-size-200">
                   Always Learning, Always Growing
                 </h3>
-                <p className="mb-3 sm:mb-4 md:mb-6 text-white/90 text-xs sm:text-sm md:text-base">
+                <p className="mb-4 sm:mb-6 md:mb-8 text-muted-foreground text-xs sm:text-sm md:text-base max-w-2xl">
                   Technology evolves rapidly, and I'm committed to staying current with the latest tools and best practices. I'm currently exploring:
                 </p>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3">
-                  {learningSkills.map((tech) => (
-                    <span key={tech} className="bg-white/20 px-1.5 sm:px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                      {tech}
-                    </span>
+                <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
+                  {learningSkills.map((tech, i) => (
+                    <motion.span
+                      key={tech}
+                      className="relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs md:text-sm font-medium overflow-hidden group/tag border border-primary/20 bg-background/50 hover:border-primary/50 transition-colors cursor-default"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, boxShadow: "0 0 15px hsl(var(--primary) / 0.5)" }}
+                    >
+                      <span className="relative z-10 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent group-hover/tag:text-primary transition-colors">{tech}</span>
+                      <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover/tag:translate-y-0 transition-transform duration-300" />
+                    </motion.span>
                   ))}
                 </div>
               </div>
@@ -625,22 +647,39 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="relative py-14 md:py-20 bg-gradient-to-r from-primary to-accent text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-30 pattern-waves pointer-events-none" />
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-background">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
+          <div className="absolute w-full h-full opacity-30 pattern-grid animate-pulse" />
+          {/* Moving beam effect */}
+          <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-shimmer" style={{ animationDuration: '3s' }} />
+          <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent animate-shimmer" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
+        </div>
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Let's Work Together</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary animate-gradient bg-size-200 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+              Let's Work Together
+            </h2>
           </Reveal>
           <Reveal>
-            <p className="text-white/80 max-w-2xl mx-auto mb-6 md:mb-8 text-sm md:text-base">
-              I'm always open to new projects and collaborations. Let's create something amazing together.
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-10 text-base md:text-lg">
+              I'm always open to new projects and collaborations. Whether you have a specific idea in mind or just want to explore possibilities, let's create something amazing together.
             </p>
           </Reveal>
           <Reveal>
-            <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-              Get In Touch
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="relative inline-block group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
+              <Button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                size="lg"
+                className="relative bg-background text-foreground border border-primary/20 hover:bg-primary/10 hover:border-primary/50 text-base md:text-lg px-8 py-6 h-auto transition-all duration-300 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
+              >
+                <span className="mr-2 group-hover:text-primary transition-colors">Get In Touch</span>
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform group-hover:text-accent" />
+              </Button>
+            </div>
           </Reveal>
         </div>
       </section>
