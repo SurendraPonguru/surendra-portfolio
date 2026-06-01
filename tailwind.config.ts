@@ -12,15 +12,17 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1.5rem',
 			screens: {
-				'2xl': '1400px'
+				'2xl': '1280px'
 			}
 		},
 		extend: {
 			fontFamily: {
-				playfair: ['Playfair Display', 'serif'],
-				poppins: ['Poppins', 'sans-serif'],
+				display: ['Syne', 'system-ui', 'sans-serif'],
+				sans: ['DM Sans', 'system-ui', 'sans-serif'],
+				playfair: ['Syne', 'system-ui', 'sans-serif'],
+				poppins: ['DM Sans', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -82,68 +84,56 @@ export default {
 					to: { height: '0' }
 				},
 				'fade-in': {
-					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'0%': { opacity: '0', transform: 'translateY(24px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
-				'fade-out': {
-					'0%': { opacity: '1', transform: 'translateY(0)' },
-					'100%': { opacity: '0', transform: 'translateY(20px)' }
-				},
-				'slide-in': {
-					'0%': { transform: 'translateX(-100%)' },
-					'100%': { transform: 'translateX(0)' }
-				},
-				'slide-right': {
-					'0%': { transform: 'translateX(0)' },
-					'100%': { transform: 'translateX(100%)' }
+				'fade-in-blur': {
+					'0%': { opacity: '0', transform: 'translateY(20px)', filter: 'blur(8px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' }
 				},
 				'scale-in': {
-					'0%': { transform: 'scale(0.9)', opacity: '0' },
+					'0%': { transform: 'scale(0.92)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
-				},
-				'scale-out': {
-					'0%': { transform: 'scale(1)', opacity: '1' },
-					'100%': { transform: 'scale(0.9)', opacity: '0' }
-				},
-				'rotate-slow': {
-					'0%': { transform: 'rotate(0deg)' },
-					'100%': { transform: 'rotate(360deg)' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-20px)' }
+					'50%': { transform: 'translateY(-16px)' }
 				},
-				'pulse-slow': {
-					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.7' }
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--primary) / 0.3)' },
+					'50%': { boxShadow: '0 0 40px hsl(var(--accent) / 0.4)' }
+				},
+				'image-zoom': {
+					'0%': { transform: 'scale(1.15)' },
+					'100%': { transform: 'scale(1)' }
+				},
+				'shine': {
+					'0%': { left: '-100%' },
+					'100%': { left: '200%' }
 				},
 				'blob': {
 					'0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
-					'25%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
-					'50%': { borderRadius: '50% 60% 30% 60% / 30% 60% 70% 40%' },
-					'75%': { borderRadius: '60% 40% 60% 30% / 60% 40% 60% 50%' }
+					'50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.8s ease-out',
-				'fade-out': 'fade-out 0.8s ease-out',
-				'slide-in': 'slide-in 0.8s ease-out',
-				'slide-right': 'slide-right 0.8s ease-out',
-				'scale-in': 'scale-in 0.8s ease-out',
-				'scale-out': 'scale-out 0.8s ease-out',
-				'rotate-slow': 'rotate-slow 20s linear infinite',
+				'fade-in': 'fade-in 0.7s ease-out forwards',
+				'fade-in-blur': 'fade-in-blur 0.8s ease-out forwards',
+				'scale-in': 'scale-in 0.6s ease-out forwards',
 				'float': 'float 6s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
-				'blob': 'blob 7s infinite'
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'image-zoom': 'image-zoom 1.2s ease-out forwards',
+				'shine': 'shine 1.5s ease-in-out',
+				'blob': 'blob 8s infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-primary': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))',
 				'gradient-secondary': 'linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--muted)))',
 				'gradient-accent': 'linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)))',
-				'gradient-modern': 'linear-gradient(135deg, hsl(221 89% 64%), hsl(267 89% 85%))',
+				'gradient-mesh': 'none',
 			}
 		}
 	},

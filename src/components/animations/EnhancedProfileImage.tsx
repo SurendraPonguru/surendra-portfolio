@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface EnhancedProfileImageProps {
   src: string;
@@ -8,131 +8,115 @@ interface EnhancedProfileImageProps {
 }
 
 export default function EnhancedProfileImage({ src, alt, className = "" }: EnhancedProfileImageProps) {
-  const imageRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [12, -12]), { stiffness: 150, damping: 18 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-12, 12]), { stiffness: 150, damping: 18 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   return (
-    <div className={`relative ${className}`}>
-      {/* Enhanced background effects */}
+    <div
+      ref={containerRef}
+      className={`relative ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: 1200 }}
+    >
       <motion.div
-        className="absolute inset-0 rounded-full"
-        animate={{
-          scale: [1, 1.1, 1],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        className="absolute -inset-4 rounded-full opacity-60 animate-glow-pulse"
         style={{
           background: "conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))",
-          filter: "blur(10px)",
-          opacity: 0.2,
+          filter: "blur(24px)",
         }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* Pulsing ring */}
-      <motion.div
-        className="absolute inset-0 rounded-full border-2"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.5, 0.2, 0.5],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          borderColor: "hsl(var(--primary))",
-        }}
-      />
-
-      {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
+      {[0, 1, 2].map((ring) => (
         <motion.div
-          key={i}
-          className="absolute w-2 h-2 rounded-full"
-          style={{
-            background: `hsl(var(${i % 2 === 0 ? '--primary' : '--accent'}))`,
-            left: '50%',
-            top: '50%',
-          }}
+          key={ring}
+          className="absolute inset-0 rounded-full border border-primary/30"
           animate={{
-            x: [0, Math.cos(i * 60 * Math.PI / 180) * 100],
-            y: [0, Math.sin(i * 60 * Math.PI / 180) * 100],
-            scale: [0, 1, 0],
-            opacity: [0, 1, 0],
+            scale: [1, 1.08 + ring * 0.04, 1],
+            opacity: [0.4, 0.15, 0.4],
           }}
           transition={{
-            duration: 4,
+            duration: 3 + ring,
             repeat: Infinity,
-            delay: i * 0.5,
+            ease: "easeInOut",
+            delay: ring * 0.5,
+          }}
+        />
+      ))}
+
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1.5 h-1.5 rounded-full z-0"
+          style={{
+            background: i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--accent))",
+            left: "50%",
+            top: "50%",
+          }}
+          animate={{
+            x: [0, Math.cos((i * 45 * Math.PI) / 180) * 120],
+            y: [0, Math.sin((i * 45 * Math.PI) / 180) * 120],
+            scale: [0, 1.2, 0],
+            opacity: [0, 0.8, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            delay: i * 0.4,
             ease: "easeInOut",
           }}
         />
       ))}
 
-      {/* Main image container */}
       <motion.div
-        className="relative z-10 w-full h-full rounded-full overflow-hidden"
-        animate={{
-          y: [-10, 10, -10],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        className="relative z-10 w-full h-full"
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        animate={{ y: [-8, 8, -8] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <motion.img
-          ref={imageRef}
-          src={src}
-          alt={alt}
-          className="w-full h-full object-cover"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          whileHover={{ scale: 1.05 }}
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "/placeholder.svg";
-          }}
-        />
+        <div className="relative w-full h-full rounded-full overflow-hidden ring-4 ring-primary/20 shadow-[var(--shadow-glow)]">
+          <motion.img
+            src={src}
+            alt={alt}
+            className="w-full h-full object-cover"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.03 }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/placeholder.svg";
+            }}
+          />
 
-        {/* Overlay gradient for better integration */}
-        <motion.div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: "radial-gradient(circle at center, transparent 60%, hsl(var(--primary) / 0.1) 100%)",
-          }}
-          animate={{
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle at 30% 20%, hsl(0 0% 100% / 0.15) 0%, transparent 50%), radial-gradient(circle at center, transparent 50%, hsl(var(--primary) / 0.08) 100%)",
+            }}
+            animate={{ opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
+        </div>
       </motion.div>
-
-      {/* Glow effect */}
-      <motion.div
-        className="absolute inset-0 rounded-full pointer-events-none"
-        animate={{
-          boxShadow: [
-            "0 0 20px hsl(var(--primary) / 0.3)",
-            "0 0 40px hsl(var(--accent) / 0.4)",
-            "0 0 20px hsl(var(--primary) / 0.3)",
-          ],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
     </div>
   );
 }

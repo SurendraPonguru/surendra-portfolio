@@ -1,132 +1,159 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { FileText, Download, X } from "lucide-react";
+import { FileText, Download, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface ResumeViewerProps {
   resumeUrl: string;
   resumeTitle: string;
+  size?: "default" | "sm" | "lg" | "icon";
+  className?: string;
 }
 
-export default function ResumeViewer({ resumeUrl, resumeTitle }: ResumeViewerProps) {
+export default function ResumeViewer({
+  resumeUrl,
+  resumeTitle,
+  size = "sm",
+  className,
+}: ResumeViewerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDownload = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const link = document.createElement('a');
+  const closeModal = () => {
+    setIsOpen(false);
+    document.body.style.overflow = "";
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = resumeTitle;
+    link.download = `${resumeTitle}.pdf`;
+    link.target = "_blank";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-  const openModal = (e: React.MouseEvent) => {
-    console.log('Button clicked, opening modal');
-    e.preventDefault();
-    e.stopPropagation();
-    e.nativeEvent?.stopImmediatePropagation();
-    
-    // Ensure no navigation occurs
-    if (e.currentTarget && 'href' in e.currentTarget) {
-      e.currentTarget.removeAttribute('href');
-    }
-    
-    console.log('Setting modal to open');
+  const openModal = () => {
     setIsOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-    document.body.style.overflow = 'unset';
+  const openInNewTab = () => {
+    window.open(resumeUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
     <>
-      <Button 
-        variant="outline" 
-        className="group bg-gradient-to-r from-primary/10 to-accent/10 border-primary/30 hover:from-primary/20 hover:to-accent/20 transition-all duration-300"
-        onClick={openModal}
-        onPointerDown={(e) => e.stopPropagation()}
-        onMouseDown={(e) => e.stopPropagation()}
+      <Button
         type="button"
-        style={{ pointerEvents: 'auto' }}
+        variant="outline"
+        size={size}
+        onClick={openModal}
+        className={cn(
+          "rounded-xl border-border bg-background hover:bg-muted/80 font-medium sm:size-lg",
+          className
+        )}
       >
-      <FileText className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-        Resume
+        <FileText className="h-4 w-4 sm:mr-2" />
+        <span className="hidden sm:inline">View Resume</span>
+        <span className="sm:hidden">Resume</span>
       </Button>
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop */}
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Resume preview"
+          >
             <motion.div
+              className="absolute inset-0 bg-black/70 backdrop-blur-md"
+              onClick={closeModal}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-              onClick={closeModal}
             />
-            
-            {/* Modal Content */}
+
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-6xl h-[90vh] bg-card rounded-2xl border border-border/50 overflow-hidden shadow-2xl"
+              exit={{ opacity: 0, scale: 0.96, y: 16 }}
+              transition={{ type: "spring", damping: 28, stiffness: 320 }}
+              className="relative flex flex-col w-full max-w-5xl h-[92vh] sm:h-[88vh] bg-card rounded-2xl border border-border shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
-              <div className="flex items-center justify-between p-1 border-b border-border/50 bg-card/95 backdrop-blur-sm">
-                <h2 className="text-xl font-bold">{resumeTitle}</h2>
-                <div className="flex items-center gap-2">
+              <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-border bg-muted/30 shrink-0">
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-primary uppercase tracking-wide mb-0.5">
+                    Resume
+                  </p>
+                  <h2 className="text-base sm:text-lg font-display font-semibold truncate pr-2">
+                    {resumeTitle}
+                  </h2>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={handleDownload}
-                    className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                    onClick={openInNewTab}
+                    className="rounded-lg hidden sm:inline-flex"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <ExternalLink className="h-4 w-4 mr-1.5" />
+                    Open tab
+                  </Button>
+                  <Button
+                    variant="default"
+                    size="sm"
+                    onClick={handleDownload}
+                    className="rounded-lg bg-gradient-primary border-0"
+                  >
+                    <Download className="h-4 w-4 mr-1.5" />
                     Download
                   </Button>
                   <Button
-                    variant="outline"
-                    size="sm"
+                    variant="ghost"
+                    size="icon"
                     onClick={closeModal}
-                    className="hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                    className="rounded-lg h-9 w-9"
+                    aria-label="Close resume"
                   >
-                    <X className="w-4 h-4" />
+                    <X className="h-5 w-5" />
                   </Button>
                 </div>
-              </div>
-              
-              {/* PDF Content */}
-              <div className="flex-1 p-1 h-[calc(90vh-32px)] overflow-hidden">
-                <div className="w-full h-full rounded-lg overflow-hidden border border-border/30 bg-background">
+              </header>
+
+              <div className="flex-1 min-h-0 p-3 sm:p-4 bg-muted/20">
+                <div className="w-full h-full rounded-xl overflow-hidden border border-border bg-white dark:bg-zinc-900 shadow-inner">
                   <iframe
-                    src={`${resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                    className="w-full h-full"
+                    src={`${resumeUrl}#view=FitH`}
+                    className="w-full h-full min-h-[60vh]"
                     title={resumeTitle}
-                    onLoad={() => console.log('PDF loaded in iframe')}
-                    onError={() => console.log('PDF failed to load in iframe')}
-                  >
-                    <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                      <FileText className="w-16 h-16 text-muted-foreground mb-4" />
-                      <h3 className="text-lg font-semibold mb-2">Unable to display PDF</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Your browser doesn't support PDF viewing. Please download the file to view it.
-                      </p>
-                      <Button onClick={handleDownload} className="mt-2">
-                        <Download className="w-4 h-4 mr-2" />
-                        Download Resume
-                      </Button>
-                    </div>
-                  </iframe>
+                  />
                 </div>
               </div>
+
+              <footer className="flex sm:hidden items-center justify-center gap-2 px-4 py-3 border-t border-border bg-muted/30 shrink-0">
+                <Button variant="outline" size="sm" onClick={openInNewTab} className="rounded-lg flex-1">
+                  <ExternalLink className="h-4 w-4 mr-1.5" />
+                  Open in browser
+                </Button>
+              </footer>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

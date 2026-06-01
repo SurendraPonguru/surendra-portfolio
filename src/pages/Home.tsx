@@ -6,21 +6,25 @@ import { ArrowRight, Download, Settings } from "lucide-react";
 import ParticleBackground from "@/components/animations/ParticleBackground";
 import { FloatingElement } from "@/components/animations/FloatingImages";
 import Reveal from "@/components/animations/RevealAnimation";
-import { ProfileDetails, workExperience, education, technicalSkills, otherSkills, learningSkills } from "@/assests/context";
+import { workExperience, education, technicalSkills, otherSkills, learningSkills } from "@/assests/context";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import SkillCard from "@/components/skills/SkillCard";
 import ProjectCard from "@/components/projects/ProjectCard";
 import SocialLinks from "@/components/contact/SocialLinks";
 import EnhancedProfileImage from "@/components/animations/EnhancedProfileImage";
+import AnimatedImage from "@/components/animations/AnimatedImage";
+import SectionTitle from "@/components/animations/SectionTitle";
 import AchievementsSection from "@/components/achievements/AchievementsSection";
 import CustomizationPanel from "@/components/customization/CustomizationPanel";
 import { motion } from "framer-motion";
 import ResumeViewer from "@/components/contact/ResumeViewer";
 import { useInteractionTracking } from "@/hooks/useAnalytics";
 import { useScrollTracking } from "@/components/analytics/AnalyticsWrapper";
+import { usePageProfile } from "@/context/ProfileSettingsContext";
 
 export default function Home() {
+  const pageProfile = usePageProfile();
   const [isCustomizationOpen, setIsCustomizationOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { trackClick } = useInteractionTracking();
@@ -137,8 +141,8 @@ export default function Home() {
     })
   };
 
-  const nameText = ProfileDetails.name;
-  const domainText = ProfileDetails.domain;
+  const nameText = pageProfile.name;
+  const domainText = pageProfile.domain;
 
   return (
     <>
@@ -172,9 +176,13 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div className="order-2 lg:order-1 space-y-3 sm:space-y-4">
               <Reveal>
-                <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-2">
-                  Welcome to my portfolio
-                </span>
+                <motion.span
+                  className="section-badge mb-3"
+                  animate={{ boxShadow: ["0 0 0px hsl(var(--primary) / 0)", "0 0 20px hsl(var(--primary) / 0.2)", "0 0 0px hsl(var(--primary) / 0)"] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
+                  ✦ Welcome to my portfolio
+                </motion.span>
               </Reveal>
               <motion.div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
@@ -213,22 +221,22 @@ export default function Home() {
               </motion.div>
               <Reveal>
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-3 sm:mb-4 max-w-lg">
-                  {ProfileDetails.about}
+                  {pageProfile.about}
                 </p>
               </Reveal>
 
               <Reveal>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-medium border border-accent/25">
+                    <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
                     Available for Remote Work
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-500 text-xs font-medium border border-blue-500/20">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium border border-primary/25">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
                     Open to Freelance
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-500 text-xs font-medium border border-purple-500/20">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 text-foreground text-xs font-medium border border-border">
+                    <div className="w-2 h-2 bg-foreground/40 rounded-full"></div>
                     Full-time Ready
                   </span>
                 </div>
@@ -236,7 +244,7 @@ export default function Home() {
 
               <Reveal>
                 <div className="flex flex-wrap gap-3 md:gap-4">
-                  <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="bg-gradient-primary hover:opacity-90 transition-opacity sm:size-lg">
+                  <Button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} variant="default" size="sm" className="btn-glow bg-gradient-primary hover:opacity-90 border-0 rounded-xl sm:size-lg">
                     View Projects
                     <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
@@ -256,7 +264,7 @@ export default function Home() {
 
             <div className="order-1 lg:order-2 relative h-[260px] sm:h-[300px] md:h-[400px] lg:h-[400px] hidden md:block">
               <EnhancedProfileImage
-                src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
+                src={pageProfile.avatarUrl}
                 alt="Profile Image"
                 className="absolute inset-0 m-auto w-80 md:w-96 lg:w-[28rem] h-80 md:h-96 lg:h-[28rem]"
               />
@@ -266,16 +274,13 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <Reveal>
-            <div className="text-center mb-10 md:mb-16">
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">What I Do</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                I specialize in creating engaging digital experiences with a focus on both aesthetics and functionality.
-              </p>
-            </div>
-          </Reveal>
+          <SectionTitle
+            badge="Services"
+            title="What I Do"
+            subtitle="I specialize in creating engaging digital experiences with a focus on both aesthetics and functionality."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
@@ -283,28 +288,39 @@ export default function Home() {
                 title: "Web Development",
                 description: "Creating responsive and performance-optimized websites with modern technologies.",
                 icon: "🌐",
-                delay: 0.1,
               },
               {
                 title: "UI/UX Design",
                 description: "Designing intuitive and beautiful user interfaces with a focus on user experience.",
                 icon: "🎨",
-                delay: 0.2,
               },
               {
                 title: "Mobile Apps",
                 description: "Building cross-platform mobile applications that work seamlessly on all devices.",
                 icon: "📱",
-                delay: 0.3,
               },
             ].map((service, index) => (
-              <Reveal key={index} delay={index}>
-                <div className="bg-card p-5 md:p-6 rounded-xl relative overflow-hidden card-hover border border-border/50 group">
-                  <div className="absolute top-0 right-0 opacity-5 text-7xl md:text-9xl font-bold -mt-4 -mr-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">{service.icon}</div>
-                  <div className="text-2xl md:text-3xl mb-3 md:mb-4">{service.icon}</div>
-                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm md:text-base">{service.description}</p>
-                </div>
+              <Reveal key={index} delay={index} direction="scale">
+                <motion.div
+                  className="glass p-6 md:p-8 relative overflow-hidden card-hover group h-full"
+                  whileHover={{ y: -4 }}
+                >
+                  <motion.div
+                    className="absolute top-0 right-0 text-8xl opacity-[0.04] -mt-2 -mr-2 select-none"
+                    animate={{ rotate: [0, 8, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, delay: index * 0.5 }}
+                  >
+                    {service.icon}
+                  </motion.div>
+                  <motion.div
+                    className="text-3xl mb-4 inline-block"
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                  >
+                    {service.icon}
+                  </motion.div>
+                  <h3 className="text-xl font-display font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{service.description}</p>
+                </motion.div>
               </Reveal>
             ))}
           </div>
@@ -320,7 +336,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20">
             <div className="relative h-[260px] sm:h-[300px] md:h-[350px] lg:h-[450px] order-1 lg:order-1">
               <EnhancedProfileImage
-                src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
+                src={pageProfile.avatarUrl}
                 alt="About Me"
                 className="absolute inset-0 m-auto w-44 sm:w-52 md:w-60 lg:w-72 h-44 sm:h-52 md:h-60 lg:h-72"
               />
@@ -332,7 +348,7 @@ export default function Home() {
               </Reveal>
               <Reveal>
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-3 sm:mb-4 md:mb-6">
-                  {ProfileDetails.about}
+                  {pageProfile.about}
                 </p>
               </Reveal>
               <Reveal>
@@ -411,16 +427,13 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className="min-h-screen py-16 md:py-20">
+      <section id="projects" ref={projectsRef} className="min-h-screen py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <Reveal>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-center">My Projects</h1>
-          </Reveal>
-          <Reveal>
-            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-              A collection of my recent work spanning web applications, mobile apps, and interactive experiences.
-            </p>
-          </Reveal>
+          <SectionTitle
+            badge="Portfolio"
+            title="My Projects"
+            subtitle="A collection of my recent work spanning web applications, mobile apps, and interactive experiences."
+          />
 
           {/* <Reveal>
             <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -468,14 +481,13 @@ export default function Home() {
               <div />
             </FloatingElement>
 
-            <Reveal>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-center relative z-10">My Skills</h1>
-            </Reveal>
-            <Reveal>
-              <p className="text-xs sm:text-sm md:text-base text-muted-foreground text-center max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 relative z-10">
-                I've developed expertise in various technologies and methodologies over my career, with a focus on front-end development and user experience.
-              </p>
-            </Reveal>
+            <div className="relative z-10">
+              <SectionTitle
+                badge="Expertise"
+                title="My Skills"
+                subtitle="I've developed expertise in various technologies and methodologies over my career, with a focus on front-end development and user experience."
+              />
+            </div>
           </div>
 
           <Reveal>
@@ -526,7 +538,7 @@ export default function Home() {
               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
-                <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-accent animate-gradient bg-size-200">
+                <h3 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4 text-foreground">
                   Always Learning, Always Growing
                 </h3>
                 <p className="mb-4 sm:mb-6 md:mb-8 text-muted-foreground text-xs sm:text-sm md:text-base max-w-2xl">
@@ -565,19 +577,18 @@ export default function Home() {
               <div />
             </FloatingElement>
 
-            <Reveal>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-center relative z-10">Get In Touch</h1>
-            </Reveal>
-            <Reveal>
-              <p className="text-xs sm:text-sm md:text-base text-muted-foreground text-center max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 relative z-10">
-                I'm always open to new opportunities, collaborations, or just a friendly chat about technology and design.
-              </p>
-            </Reveal>
+            <div className="relative z-10">
+              <SectionTitle
+                badge="Contact"
+                title="Get In Touch"
+                subtitle="I'm always open to new opportunities, collaborations, or just a friendly chat about technology and design."
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             <Reveal>
-              <div className="bg-card rounded-2xl p-4 sm:p-6 md:p-8 border border-border/50">
+              <div className="glass p-4 sm:p-6 md:p-8">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Contact Information</h2>
                 <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6 md:mb-8">
                   <div className="flex items-start space-x-3">
@@ -586,7 +597,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="font-medium">Location</h3>
-                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{ProfileDetails.address}</p>
+                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{pageProfile.address}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -595,7 +606,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="font-medium">Email</h3>
-                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{ProfileDetails.email}</p>
+                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{pageProfile.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -604,22 +615,22 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="font-medium">Phone</h3>
-                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{ProfileDetails.phoneNumber}</p>
+                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{pageProfile.phone}</p>
                     </div>
                   </div>
                 </div>
-                <div className="relative h-36 sm:h-40 md:h-48 rounded-xl overflow-hidden">
-                  <img
-                    src="/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png"
-                    alt="Hyderabad Cityscape"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 text-white">
-                    <h3 className="font-bold">Hyderabad</h3>
-                    <p className="text-xs md:text-sm">Available for remote work</p>
-                  </div>
-                </div>
+                <AnimatedImage
+                  src="/images/1d25e8b1-1535-4f3b-9b1d-7fada51486f6.png"
+                  alt="Hyderabad Cityscape"
+                  className="h-40 sm:h-48 md:h-52"
+                  enableTilt
+                  overlay={
+                    <div className="absolute bottom-3 left-3 text-white z-20">
+                      <h3 className="font-display font-bold text-lg">Hyderabad</h3>
+                      <p className="text-xs md:text-sm opacity-90">Available for remote work</p>
+                    </div>
+                  }
+                />
               </div>
             </Reveal>
 
@@ -628,7 +639,11 @@ export default function Home() {
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Connect With Me</h2>
                 <SocialLinks />
 
-                <div className="mt-6 sm:mt-8 md:mt-12 p-4 sm:p-5 md:p-6 relative bg-gradient-to-r from-primary to-accent rounded-2xl text-white overflow-hidden">
+                <motion.div
+                  className="mt-6 sm:mt-8 md:mt-12 p-4 sm:p-5 md:p-6 relative bg-gradient-primary rounded-2xl text-white overflow-hidden"
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <div className="absolute inset-0 opacity-30 pattern-grid pointer-events-none" />
                   <div className="relative z-10">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4">Looking for a developer?</h3>
@@ -639,7 +654,7 @@ export default function Home() {
                       <span className="font-semibold">Response time:</span> Usually within 24 hours
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </Reveal>
           </div>
@@ -659,7 +674,7 @@ export default function Home() {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary animate-gradient bg-size-200 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-muted-foreground to-foreground animate-gradient bg-size-200">
               Let's Work Together
             </h2>
           </Reveal>

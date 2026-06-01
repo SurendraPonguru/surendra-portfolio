@@ -1,14 +1,16 @@
 
 import ParticleBackground from "@/components/animations/ParticleBackground";
-import { FloatingElement } from "@/components/animations/FloatingImages";
+import EnhancedProfileImage from "@/components/animations/EnhancedProfileImage";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Reveal from "@/components/animations/RevealAnimation";
-import { workExperience, education, ProfileDetails } from "@/assests/context";
+import { workExperience, education } from "@/assests/context";
 import ResumeViewer from "@/components/contact/ResumeViewer";
+import { usePageProfile } from "@/context/ProfileSettingsContext";
 
 export default function About() {
+  const pageProfile = usePageProfile();
   return (
     <>
       <ParticleBackground />
@@ -17,19 +19,11 @@ export default function About() {
         <div className="container mx-auto px-4 py-8 sm:py-10 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20">
             <div className="relative h-[260px] sm:h-[300px] md:h-[350px] lg:h-[450px] order-1 lg:order-1">
-              <FloatingElement className="absolute inset-0 m-auto w-48 sm:w-56 md:w-64 lg:w-80 h-48 sm:h-56 md:h-64 lg:h-80">
-                <div className="w-full h-full rounded-full bg-gradient-primary opacity-30 filter blur-xl"></div>
-              </FloatingElement>
-              
-              <FloatingElement className="absolute inset-0 m-auto w-44 sm:w-52 md:w-60 lg:w-72 h-44 sm:h-52 md:h-60 lg:h-72 overflow-hidden rounded-full">
-                <div className="w-full h-full overflow-hidden">
-                  <img
-                    src="/images/ebc6f922-f187-4c31-909d-3012ff5fb66b.png"
-                    alt="About Me"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </FloatingElement>
+              <EnhancedProfileImage
+                src={pageProfile.avatarUrl}
+                alt="About Me"
+                className="absolute inset-0 m-auto w-44 sm:w-52 md:w-60 lg:w-72 h-44 sm:h-52 md:h-60 lg:h-72"
+              />
             </div>
 
             <div className="order-2 lg:order-2">
@@ -38,7 +32,7 @@ export default function About() {
               </Reveal>
               <Reveal>
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-3 sm:mb-4 md:mb-6">
-                  {ProfileDetails.about}
+                  {pageProfile.about}
                 </p>
               </Reveal>
               <Reveal>

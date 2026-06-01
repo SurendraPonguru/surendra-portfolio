@@ -1,72 +1,71 @@
-import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export const CursorAnimation = () => {
   const [isMoving, setIsMoving] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 700 };
+  const springConfig = { damping: 28, stiffness: 400 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    let moveTimeout: NodeJS.Timeout;
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouchDevice) return;
+
+    let moveTimeout: ReturnType<typeof setTimeout>;
 
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
-      
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+      setIsVisible(true);
       setIsMoving(true);
       clearTimeout(moveTimeout);
-      moveTimeout = setTimeout(() => {
-        setIsMoving(false);
-      }, 100);
+      moveTimeout = setTimeout(() => setIsMoving(false), 80);
     };
 
-    window.addEventListener('mousemove', moveCursor);
+    const hideCursor = () => setIsVisible(false);
+
+    window.addEventListener("mousemove", moveCursor);
+    document.addEventListener("mouseleave", hideCursor);
 
     return () => {
-      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener("mousemove", moveCursor);
+      document.removeEventListener("mouseleave", hideCursor);
       clearTimeout(moveTimeout);
     };
   }, [cursorX, cursorY]);
 
+  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+    return null;
+  }
+
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-primary pointer-events-none z-50 mix-blend-difference"
-      style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
-      }}
-      animate={{
-        scale: isMoving ? 1 : 0.5,
-        opacity: isMoving ? 1 : 0.8,
-        rotate: isMoving ? 0 : 45,
-      }}
-      transition={{
-        scale: { duration: 0.2 },
-        opacity: { duration: 0.2 },
-        rotate: { 
-          type: "spring",
-          stiffness: 260,
-          damping: 20 
-        }
-      }}
-    >
-      {!isMoving && (
-        <motion.div
-          className="w-full h-full bg-primary rounded-full opacity-50"
-          animate={{
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      )}
-    </motion.div>
+    <>
+      <motion.div
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary/60 pointer-events-none z-[9999] hidden md:block"
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
+          translateX: "-50%",
+          translateY: "-50%",
+          opacity: isVisible ? 1 : 0,
+        }}
+        animate={{ scale: isMoving ? 1.2 : 0.8 }}
+        transition={{ duration: 0.15 }}
+      />
+      <motion.div
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] hidden md:block"
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
+          translateX: "-50%",
+          translateY: "-50%",
+          opacity: isVisible ? 0.9 : 0,
+        }}
+      />
+    </>
   );
 };

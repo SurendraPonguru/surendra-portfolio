@@ -57,7 +57,7 @@ export default function AchievementsSection() {
               <span className="text-sm font-medium text-primary">Achievements Unlocked</span>
             </motion.div>
             
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 gradient-text">
               Milestones & Recognition
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -89,10 +89,10 @@ export default function AchievementsSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           {[
-            { label: "Projects Completed", value: "8+", color: "from-blue-500 to-blue-600" },
-            { label: "Years Experience", value: "3+", color: "from-green-500 to-green-600" },
-            { label: "Technologies", value: "8+", color: "from-purple-500 to-purple-600" },
-            { label: "Client Rating", value: "5.0⭐", color: "from-yellow-500 to-yellow-600" },
+            { label: "Projects Completed", value: "8+", color: "from-slate-600 to-slate-700" },
+            { label: "Years Experience", value: "3+", color: "from-slate-500 to-slate-600" },
+            { label: "Technologies", value: "8+", color: "from-slate-600 to-slate-800" },
+            { label: "Client Rating", value: "5.0⭐", color: "from-slate-500 to-slate-700" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

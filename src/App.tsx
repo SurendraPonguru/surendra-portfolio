@@ -15,8 +15,6 @@ import NotFound from "./pages/NotFound";
 import AppLoader from "./components/ui/AppLoader";
 import { initAnalytics } from "./lib/analytics";
 import { usePageTracking } from "./hooks/useAnalytics";
-import { CursorAnimation } from "./components/CursorAnimation";
-
 const queryClient = new QueryClient();
 
 const AppContent = () => {
@@ -60,7 +58,6 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <CursorAnimation />
         <BrowserRouter>
           <AppContent />
         </BrowserRouter>

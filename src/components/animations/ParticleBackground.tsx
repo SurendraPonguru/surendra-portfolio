@@ -27,7 +27,7 @@ export default function ParticleBackground() {
 
     let animationId: number;
     let particles: Particle[] = [];
-    let mouse = { x: -1000, y: -1000, radius: 150 };
+    let mouse = { x: -1000, y: -1000, radius: 140 };
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -37,27 +37,27 @@ export default function ParticleBackground() {
 
     const initParticles = () => {
       particles = [];
-      const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 150);
+      const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
 
-      const primaryColor = theme === "dark" ? "rgba(156, 85, 237," : "rgba(100, 50, 180,";
-      const secondaryColor = theme === "dark" ? "rgba(85, 237, 199," : "rgba(40, 150, 130,";
+      const primaryColor = theme === "dark" ? "rgba(160, 160, 170," : "rgba(100, 100, 110,";
+      const accentColor = theme === "dark" ? "rgba(120, 120, 130," : "rgba(140, 140, 150,";
 
       for (let i = 0; i < particleCount; i++) {
-        const size = Math.random() * 3 + 1;
+        const size = Math.random() * 2.5 + 0.8;
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
-        const color = Math.random() > 0.5 ? primaryColor : secondaryColor;
+        const color = Math.random() > 0.5 ? primaryColor : accentColor;
 
         particles.push({
           x,
           y,
           size,
-          speedX: (Math.random() - 0.5) * 1.5,
-          speedY: (Math.random() - 0.5) * 1.5,
+          speedX: (Math.random() - 0.5) * 1.2,
+          speedY: (Math.random() - 0.5) * 1.2,
           color,
           originalX: x,
           originalY: y,
-          density: (Math.random() * 30) + 1
+          density: Math.random() * 30 + 1,
         });
       }
     };
@@ -65,57 +65,43 @@ export default function ParticleBackground() {
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Update mouse interaction
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Distance from mouse
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const distance = Math.sqrt(dx * dx + dy * dy) || 1;
 
-        // Mouse Repulsion / Attraction
         const forceDirectionX = dx / distance;
         const forceDirectionY = dy / distance;
         const maxDistance = mouse.radius;
         const force = (maxDistance - distance) / maxDistance;
 
-        // Return to original speed if far
         if (distance < mouse.radius) {
-          // Repel
-          const directionX = forceDirectionX * force * p.density;
-          const directionY = forceDirectionY * force * p.density;
-          p.x -= directionX;
-          p.y -= directionY;
+          p.x -= forceDirectionX * force * p.density * 0.8;
+          p.y -= forceDirectionY * force * p.density * 0.8;
         } else {
-          // Normal movement
-          if (p.x !== p.originalX) {
-            // Determine movement
-            p.x += p.speedX;
-            p.y += p.speedY;
-          }
+          p.x += p.speedX;
+          p.y += p.speedY;
         }
 
-        // Boundary Check & Wrap around
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Draw Particle
-        ctx.fillStyle = `${p.color} ${theme === 'dark' ? '0.8' : '0.6'})`;
+        ctx.fillStyle = `${p.color} ${theme === "dark" ? "0.7" : "0.5"})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Connections
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
 
-          if (dist < 120) {
-            ctx.strokeStyle = `${p.color} ${1 - dist / 120})`;
-            ctx.lineWidth = 0.5;
+          if (dist < 100) {
+            ctx.strokeStyle = `${p.color} ${(1 - dist / 100) * 0.4})`;
+            ctx.lineWidth = 0.4;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -145,7 +131,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-60 pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full -z-10 opacity-25 pointer-events-none"
     />
   );
 }

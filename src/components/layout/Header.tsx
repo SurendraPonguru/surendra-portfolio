@@ -3,48 +3,27 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useProfileSettings } from "@/context/ProfileSettingsContext";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const { toggleTheme, theme } = useTheme();
+  const { headerProfile, openProfile } = useProfileSettings();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [isLogoHovered, setIsLogoHovered] = useState(false);
-  const [displayText, setDisplayText] = useState("SP");
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-
-  useEffect(() => {
-    const fullText = "Surendra Ponguru";
-    const shortText = "SP";
-
-    if (isLogoHovered) {
-      let currentIndex = 0;
-      const typingInterval = setInterval(() => {
-        if (currentIndex <= fullText.length) {
-          setDisplayText(fullText.slice(0, currentIndex));
-          currentIndex++;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, 80);
-
-      return () => clearInterval(typingInterval);
-    } else {
-      setDisplayText(shortText);
-    }
-  }, [isLogoHovered]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
 
-      // Only track sections on home page
       if (!isHomePage) return;
 
       const sections = ["home", "about", "projects", "skills", "contact"];
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 120;
 
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
@@ -59,9 +38,7 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
 
   useEffect(() => {
@@ -75,97 +52,103 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     if (isHomePage) {
       const element = document.getElementById(sectionId);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      element?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const navLinks = isHomePage
     ? [
-      { id: "home", label: "Home" },
-      { id: "about", label: "About" },
-      { id: "projects", label: "Projects" },
-      { id: "skills", label: "Skills" },
-      { id: "contact", label: "Contact" },
-    ]
+        { id: "home", label: "Home" },
+        { id: "about", label: "About" },
+        { id: "projects", label: "Projects" },
+        { id: "skills", label: "Skills" },
+        { id: "contact", label: "Contact" },
+      ]
     : [
-      { path: "/", label: "Home" },
-      { path: "/about", label: "About" },
-      { path: "/projects", label: "Projects" },
-      { path: "/skills", label: "Skills" },
-      { path: "/contact", label: "Contact" },
-    ];
+        { path: "/", label: "Home" },
+        { path: "/about", label: "About" },
+        { path: "/projects", label: "Projects" },
+        { path: "/skills", label: "Skills" },
+        { path: "/contact", label: "Contact" },
+      ];
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-background/80 backdrop-blur-lg shadow-sm" : "py-6"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "py-3 glass-strong shadow-lg border-b border-border/40"
+          : "py-5 bg-transparent"
+      }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <NavLink
-            to="/"
-            className="group flex items-center gap-2 hover-scale"
-            onMouseEnter={() => setIsLogoHovered(true)}
-            onMouseLeave={() => setIsLogoHovered(false)}
-          >
-            <div className="relative">
-              <img
-                src="/images/32e785d4-d1ae-4c9a-a15b-3475263700e6.png"
-                alt="Profile"
-                className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/50 transition-all duration-300"
-              />
-              <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            <span className="text-xl font-playfair font-bold gradient-text relative min-w-[40px]">
-              {displayText}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
-            </span>
-          </NavLink>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={openProfile}
+              className="relative rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              aria-label="Open profile"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <img
+                  src={headerProfile.avatarUrl}
+                  alt={headerProfile.name}
+                  className="w-9 h-9 rounded-xl object-cover ring-2 ring-primary/30 hover:ring-primary/60 transition-all duration-300"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/placeholder.svg";
+                  }}
+                />
+              </motion.div>
+            </button>
+            <NavLink
+              to="/"
+              className="text-lg font-display font-bold gradient-text hover:opacity-90 transition-opacity"
+            >
+              {headerProfile.name.split(" ")[0]}
+            </NavLink>
+          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 items-center">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex space-x-1 items-center glass px-2 py-1.5 rounded-full">
+            {navLinks.map((link) =>
               isHomePage ? (
                 <button
                   key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className={`nav-link ${activeSection === link.id ? "active" : ""}`}
+                  onClick={() => scrollToSection(link.id!)}
+                  className={`nav-link px-4 rounded-full ${activeSection === link.id ? "active bg-primary/10" : ""}`}
                 >
                   {link.label}
                 </button>
               ) : (
                 <NavLink
                   key={link.path}
-                  to={link.path}
+                  to={link.path!}
                   className={({ isActive }) =>
-                    `nav-link ${isActive ? "active" : ""}`
+                    `nav-link px-4 rounded-full ${isActive ? "active bg-primary/10" : ""}`
                   }
                 >
                   {link.label}
                 </NavLink>
               )
-            ))}
+            )}
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="ml-2 rounded-full hover:bg-primary/10"
+              className="ml-1 rounded-full hover:bg-primary/10"
             >
-              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+              {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
               <span className="sr-only">Toggle theme</span>
             </Button>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden gap-1">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="mr-2 rounded-full hover:bg-primary/10"
+              className="rounded-full hover:bg-primary/10"
             >
               {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-              <span className="sr-only">Toggle theme</span>
             </Button>
             <Button
               variant="ghost"
@@ -174,46 +157,72 @@ export default function Header() {
               className="rounded-full hover:bg-primary/10"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              <span className="sr-only">Menu</span>
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 md:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        style={{ top: "var(--header-height, 70px)" }}
-      >
-        {/* <div className="absolute inset-0" /> */}
-        <nav className="relative flex flex-col py-8 px-8 space-y-6 z-10 w-full bg-gradient-to-b from-white/95 to-slate-50/95 dark:from-zinc-950/95 dark:to-zinc-900/95 backdrop-blur-xl border-r border-border/50 shadow-2xl">
-          {navLinks.map((link) => (
-            isHomePage ? (
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden overflow-hidden"
+          >
+            <nav className="container mx-auto px-4 py-6 flex flex-col gap-2 glass-strong mt-2 mx-4 rounded-2xl">
               <button
-                key={link.id}
+                type="button"
                 onClick={() => {
-                  scrollToSection(link.id);
+                  openProfile();
                   setIsMobileMenuOpen(false);
                 }}
-                className={`text-xl nav-link text-left ${activeSection === link.id ? "active" : ""}`}
+                className="flex items-center gap-3 text-left text-lg py-3 px-4 rounded-xl hover:bg-muted mb-2 border border-border/50"
               >
-                {link.label}
+                <img
+                  src={headerProfile.avatarUrl}
+                  alt=""
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <span className="font-semibold">View profile</span>
               </button>
-            ) : (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={({ isActive }) =>
-                  `text-xl nav-link ${isActive ? "active" : ""}`
-                }
-              >
-                {link.label}
-              </NavLink>
-            )
-          ))}
-        </nav>
-      </div>
+              {navLinks.map((link, i) =>
+                isHomePage ? (
+                  <motion.button
+                    key={link.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => {
+                      scrollToSection(link.id!);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`text-left text-lg py-3 px-4 rounded-xl transition-colors ${
+                      activeSection === link.id
+                        ? "bg-primary/10 text-primary font-semibold"
+                        : "hover:bg-muted"
+                    }`}
+                  >
+                    {link.label}
+                  </motion.button>
+                ) : (
+                  <NavLink
+                    key={link.path}
+                    to={link.path!}
+                    className={({ isActive }) =>
+                      `text-lg py-3 px-4 rounded-xl transition-colors ${
+                        isActive ? "bg-primary/10 text-primary font-semibold" : "hover:bg-muted"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                )
+              )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

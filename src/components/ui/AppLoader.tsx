@@ -125,7 +125,7 @@ export default function AppLoader() {
               transition={{ duration: 0.3 }}
               className="text-center"
             >
-              <h2 className="text-xl font-bold tracking-wider font-playfair bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary animate-gradient bg-size-200">
+              <h2 className="text-xl font-bold tracking-wider font-display gradient-text animate-gradient bg-size-200">
                 {stages[loadingStage].text}
               </h2>
               <p className="text-xs text-muted-foreground font-mono mt-1">
